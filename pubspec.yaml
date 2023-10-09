@@ -14,6 +14,7 @@ dependencies:
   dio_cookie_manager: ^3.1.1
   elementary: ^3.0.0
   elementary_helper: ^1.0.1
+  extended_masked_text: ^2.3.1
   flutter:
     sdk: flutter
   go_router: ^11.1.2
@@ -21,6 +22,7 @@ dependencies:
   mobile_device_identifier: ^0.0.2
   package_info_plus: ^4.1.0
   path_provider: ^2.1.1
+  pinput: ^3.0.1
   responsive_framework: ^1.1.1
 
 dev_dependencies:
