@@ -2,6 +2,7 @@ import 'package:eastern_dragon/common/presentation/widgets/custom_text_field/cus
 import 'package:eastern_dragon/const/static/static_data.dart';
 import 'package:eastern_dragon/const/theme/styles.dart';
 import 'package:eastern_dragon/sections/auth/domain/auth_screen_wm.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 
 class AuthPhoneSection extends StatelessWidget {
@@ -71,6 +72,17 @@ class AuthPhoneSection extends StatelessWidget {
           const SizedBox(
             height: 40,
           ),
+          FilledButton(
+            onPressed: () {
+              FirebaseAnalytics.instance.logEvent(
+                name: 'bloc_create',
+                parameters: {
+                  'screen': '123',
+                },
+              );
+            },
+            child: const Text('Продолжить'),
+          )
         ],
       ),
     );

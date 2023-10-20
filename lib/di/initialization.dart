@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:eastern_dragon/di/dependencies.dart';
 import 'package:eastern_dragon/di/initialize_dependencies.dart';
+import 'package:eastern_dragon/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
@@ -23,6 +25,10 @@ Future<Dependencies> $initializeApp({
         ///
         /// Рендеринг возобновится, когда все зависимости будут инициализированы
         binding = WidgetsFlutterBinding.ensureInitialized()..deferFirstFrame();
+
+        await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform,
+        );
 
         /// Ловятся ошибки, которые могли возникнуть при инициализации фреймворка
         await _catchExceptions();

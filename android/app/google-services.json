@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "617487080888",
+    "project_id": "eastern-dragon-app",
+    "storage_bucket": "eastern-dragon-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617487080888:android:9a4ef63d5e64b6dbcc834d",
+        "android_client_info": {
+          "package_name": "com.example.eastern_dragon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANU4Be8TaimqNoq0OOqCYGTAjaC23IvSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
