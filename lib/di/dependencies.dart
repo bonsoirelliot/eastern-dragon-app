@@ -1,5 +1,6 @@
 import 'package:eastern_dragon/common/data/models/app_metadata.dart';
 import 'package:eastern_dragon/common/domain/services/request_handler.dart';
+import 'package:eastern_dragon/common/domain/user/user_auth_entity.dart';
 import 'package:eastern_dragon/di/inherited_dependencies.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,8 @@ abstract interface class Dependencies {
 
   /// Отправка запросов.
   abstract final RequestHandler requestHandler;
+
+  abstract final UserAuthEntity userAuthEntity;
 }
 
 /// Мутабельные зависимости
@@ -35,9 +38,13 @@ final class $MutableDependencies implements Dependencies {
   @override
   late AppMetadata appMetadata;
 
+  @override
+  late UserAuthEntity userAuthEntity;
+
   Dependencies freeze() => _$ImmutableDependencies(
         requestHandler: requestHandler,
         appMetadata: appMetadata,
+        userAuthEntity: userAuthEntity,
       );
 }
 
@@ -48,6 +55,7 @@ final class _$ImmutableDependencies implements Dependencies {
   _$ImmutableDependencies({
     required this.requestHandler,
     required this.appMetadata,
+    required this.userAuthEntity,
   });
 
   // @override
@@ -58,4 +66,7 @@ final class _$ImmutableDependencies implements Dependencies {
 
   @override
   final AppMetadata appMetadata;
+
+  @override
+  final UserAuthEntity userAuthEntity;
 }

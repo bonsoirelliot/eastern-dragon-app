@@ -21,11 +21,13 @@ class EasternDragonApp extends StatelessWidget {
         routerConfig: AppRouter.router,
         builder: (_, child) {
           return MediaQuery(
-            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            data: MediaQuery.of(context).copyWith(
+              textScaler: const TextScaler.linear(1.0),
+            ),
             child: ResponsiveScaledBox(
               width: 375,
               child: Theme(
-                data: lightTheme,
+                data: appTheme,
                 child: child!,
               ),
             ),

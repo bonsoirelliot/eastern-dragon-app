@@ -3,7 +3,7 @@ import 'package:eastern_dragon/const/theme/theme_constants/button_constants.dart
 import 'package:eastern_dragon/const/theme/theme_constants/filled_button_color_constants.dart';
 import 'package:flutter/material.dart';
 
-final lightTheme = ThemeData(
+final appTheme = ThemeData(
   scaffoldBackgroundColor: AppColors.black,
   filledButtonTheme: FilledButtonThemeData(
     style: ButtonStyle(
@@ -15,6 +15,7 @@ final lightTheme = ThemeData(
       elevation: ButtonElevation(),
       iconSize: ButtonIconSize(),
       shape: ButtonShape(),
+      foregroundColor: FilledButtonIconColor(),
     ),
   ),
 );

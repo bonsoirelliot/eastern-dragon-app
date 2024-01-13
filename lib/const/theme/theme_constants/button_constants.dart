@@ -57,3 +57,12 @@ class ButtonShape extends MaterialStateProperty<OutlinedBorder> {
     );
   }
 }
+
+class SquareButtonShape extends MaterialStateProperty<OutlinedBorder> {
+  @override
+  OutlinedBorder resolve(Set<MaterialState> states) {
+    return RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(6),
+    );
+  }
+}

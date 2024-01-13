@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:eastern_dragon/common/data/models/app_metadata.dart';
 import 'package:eastern_dragon/common/domain/services/request_handler.dart';
+import 'package:eastern_dragon/common/domain/user/user_auth_entity.dart';
 import 'package:eastern_dragon/di/dependencies.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mobile_device_identifier/mobile_device_identifier.dart';
@@ -63,6 +64,9 @@ final Map<String, _InitializationStep> _initializationSteps =
   'Initialize RequestHandler': (dependencies) {
     dependencies.requestHandler =
         RequestHandler(metadata: dependencies.appMetadata);
+  },
+  'Initialize UserAuth': (dependencies) {
+    dependencies.userAuthEntity = UserAuthEntity();
   },
   'Initializing analytics': (_) async {/* ... */},
   'Log app open': (_) {},

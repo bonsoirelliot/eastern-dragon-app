@@ -42,3 +42,10 @@ class FilledButtonPadding extends MaterialStateProperty<EdgeInsets> {
     return const EdgeInsets.fromLTRB(17, 11, 17, 13);
   }
 }
+
+class SquareFilledButtonPadding extends MaterialStateProperty<EdgeInsets> {
+  @override
+  EdgeInsets resolve(Set<MaterialState> states) {
+    return const EdgeInsets.fromLTRB(12, 6, 12, 6);
+  }
+}

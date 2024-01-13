@@ -1,4 +1,6 @@
 import 'package:eastern_dragon/sections/auth/presentation/auth_screen.dart';
+import 'package:eastern_dragon/sections/catalog/presentation/catalog_screen.dart';
+import 'package:eastern_dragon/sections/welcome/presentation/pages/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,12 +9,20 @@ abstract class AppRouter {
   static final mainNavigatorKey = GlobalKey<NavigatorState>();
 
   static final router = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/welcome',
     navigatorKey: navigatorKey,
     routes: [
       GoRoute(
-        path: '/',
+        path: '/welcome',
+        builder: (_, __) => const WelcomeScreen(),
+      ),
+      GoRoute(
+        path: '/auth',
         builder: (_, __) => const AuthScreen(),
+      ),
+      GoRoute(
+        path: '/catalog',
+        builder: (_, __) => const CatalogScreen(),
       ),
     ],
   );

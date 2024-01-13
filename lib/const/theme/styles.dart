@@ -49,6 +49,14 @@ class AppStyles {
     color: Colors.white,
   );
 
+  static const subtitle = TextStyle(
+    fontFamily: 'NotoSans',
+    fontWeight: FontWeight.w400,
+    fontSize: 14,
+    height: 1.2,
+    color: Colors.white,
+  );
+
   static const caption = TextStyle(
     fontFamily: 'NotoSans',
     fontWeight: FontWeight.w400,

@@ -18,10 +18,13 @@ dependencies:
     sdk: flutter
   go_router: ^11.1.2
   logger: ^2.0.2+1
+  mask_text_input_formatter: ^2.7.0
   mobile_device_identifier: ^0.0.2
   package_info_plus: ^4.1.0
   path_provider: ^2.1.1
+  pinput: ^3.0.1
   responsive_framework: ^1.1.1
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_lints: ^2.0.0
