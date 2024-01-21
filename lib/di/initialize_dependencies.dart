@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:eastern_dragon/common/data/models/app_metadata.dart';
+import 'package:eastern_dragon/common/domain/services/executor.dart';
 import 'package:eastern_dragon/common/domain/services/request_handler.dart';
+import 'package:eastern_dragon/common/domain/services/request_helper.dart';
 import 'package:eastern_dragon/common/domain/user/user_auth_entity.dart';
 import 'package:eastern_dragon/di/dependencies.dart';
 import 'package:flutter/foundation.dart';
@@ -62,8 +64,17 @@ final Map<String, _InitializationStep> _initializationSteps =
     );
   },
   'Initialize RequestHandler': (dependencies) {
-    dependencies.requestHandler =
-        RequestHandler(metadata: dependencies.appMetadata);
+    dependencies.requestHandler = RequestHandler(
+      metadata: dependencies.appMetadata,
+    );
+  },
+  'Initialize RequestHelper': (dependencies) {
+    dependencies.requestHelper = RequestHelper(
+      requestHandler: dependencies.requestHandler,
+    );
+  },
+  'Initialize Executor': (dependencies) {
+    dependencies.executor = Executor();
   },
   'Initialize UserAuth': (dependencies) {
     dependencies.userAuthEntity = UserAuthEntity();

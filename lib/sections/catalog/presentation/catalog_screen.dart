@@ -1,48 +1,27 @@
-import 'package:eastern_dragon/common/presentation/widgets/input_field/input_field.dart';
-import 'package:eastern_dragon/sections/catalog/presentation/widgets/catalog_section/catalog_section_widget.dart';
-import 'package:eastern_dragon/sections/catalog/presentation/widgets/horizontal_filter/catalog_horizontal_filter.dart';
+import 'package:eastern_dragon/sections/catalog/domain/catalog_screen_wm.dart';
+import 'package:eastern_dragon/sections/catalog/presentation/widgets/catalog_screen_loaded_body.dart';
+import 'package:elementary/elementary.dart';
+import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
 
-class CatalogScreen extends StatelessWidget {
-  const CatalogScreen({super.key});
+class CatalogScreen extends ElementaryWidget<ICatalogScreenWM> {
+  const CatalogScreen({super.key})
+      : super(
+          defaultCatalogScreenWMFactory,
+        );
 
   @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
+  Widget build(ICatalogScreenWM wm) {
+    return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12),
-          child: CustomScrollView(
-            slivers: [
-              SliverPadding(
-                padding: EdgeInsets.only(top: 12, bottom: 16),
-                sliver: SliverToBoxAdapter(
-                  child: InputField(
-                    hintText: 'Поиск',
-                    suffixIcon: Icon(
-                      Icons.search,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: CatalogHorizontalFilter(
-                  items: [
-                    'Обеды',
-                    'Готовые блюда',
-                    'Напитки',
-                    'Магазин',
-                  ],
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: 24,
-                ),
-              ),
-              CatalogSectionWidget(),
-            ],
+        child: EntityStateNotifierBuilder(
+          listenableEntityState: wm.catalogSectionsListenable,
+          errorBuilder: (_, e, __) => const SizedBox(),
+          loadingBuilder: (_, __) => const Center(
+            child: CircularProgressIndicator.adaptive(),
+          ),
+          builder: (_, models) => CatalogScreenLoadedBody(
+            models: models!,
           ),
         ),
       ),

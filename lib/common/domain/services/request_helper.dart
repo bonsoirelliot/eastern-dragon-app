@@ -1,66 +1,68 @@
-// // ignore_for_file: avoid_annotating_with_dynamic
+// ignore_for_file: avoid_annotating_with_dynamic
 
-// import 'package:tvstart_mobile/common/data/models/base_response/base_response_model.dart';
-// import 'package:tvstart_mobile/common/domain/services/request_handler.dart';
+import 'package:eastern_dragon/common/data/models/base_response/base_response_model.dart';
+import 'package:eastern_dragon/common/domain/services/request_handler.dart';
 
-// abstract class RequestHelper {
-//   static final _rh = RequestHandler();
+class RequestHelper {
+  final RequestHandler requestHandler;
 
-//   // static Future<T> getSimpleObject<T>(
-//   //   String path,
-//   // ) async {
-//   //   final response = await _rh.get(path);
+  RequestHelper({required this.requestHandler});
 
-//   //   return response.data as T;
-//   // }
+  // static Future<T> getSimpleObject<T>(
+  //   String path,
+  // ) async {
+  //   final response = await _rh.get(path);
 
-//   // static Future<List<T>> getListOfSimpleObjects<T>(
-//   //   String path,
-//   // ) async {
-//   //   final response = await _rh.get(path);
+  //   return response.data as T;
+  // }
 
-//   //   final list =
-//   //       (response.data as List<dynamic>).map((dynamic e) => e as T).toList();
+  // static Future<List<T>> getListOfSimpleObjects<T>(
+  //   String path,
+  // ) async {
+  //   final response = await _rh.get(path);
 
-//   //   return list;
-//   // }
+  //   final list =
+  //       (response.data as List<dynamic>).map((dynamic e) => e as T).toList();
 
-//   static Future<T> getObject<T>(
-//     String path,
-//     T Function(Map<String, dynamic>) fromJson, {
-//     Map<String, dynamic>? queryParameters,
-//   }) async {
-//     final response = await _rh.get<dynamic>(
-//       path,
-//       queryParameters: queryParameters,
-//     );
+  //   return list;
+  // }
 
-//     final baseRes =
-//         BaseResponseRepository.fromJson(response.data as Map<String, dynamic>);
+   Future<T> getObject<T>(
+    String path,
+    T Function(Map<String, dynamic>) fromJson, {
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    final response = await requestHandler.get<dynamic>(
+      path,
+      queryParameters: queryParameters,
+    );
 
-//     final obj = fromJson(baseRes.data as Map<String, dynamic>);
+    final baseRes =
+        BaseResponseModel.fromJson(response.data as Map<String, dynamic>);
 
-//     return obj;
-//   }
+    final obj = fromJson(baseRes.data as Map<String, dynamic>);
 
-//   static Future<List<T>> getListOfObjects<T>(
-//     String path,
-//     T Function(Map<String, dynamic>) fromJson, {
-//     Map<String, dynamic>? queryParameters,
-//   }) async {
-//     final response = await _rh.get<dynamic>(
-//       path,
-//       queryParameters: queryParameters,
-//     );
+    return obj;
+  }
 
-//     final baseRes =
-//         BaseResponseRepository.fromJson(response.data as Map<String, dynamic>);
+   Future<List<T>> getListOfObjects<T>(
+    String path,
+    T Function(Map<String, dynamic>) fromJson, {
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    final response = await requestHandler.get<dynamic>(
+      path,
+      queryParameters: queryParameters,
+    );
 
-//     // print('banan  ${baseRes.data}');
-//     final list = (baseRes.data as List<dynamic>)
-//         .map((dynamic e) => fromJson(e as Map<String, dynamic>))
-//         .toList();
+    final baseRes =
+        BaseResponseModel.fromJson(response.data as Map<String, dynamic>);
 
-//     return list;
-//   }
-// }
+    // print('banan  ${baseRes.data}');
+    final list = (baseRes.data as List<dynamic>)
+        .map((dynamic e) => fromJson(e as Map<String, dynamic>))
+        .toList();
+
+    return list;
+  }
+}
