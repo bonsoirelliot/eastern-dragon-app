@@ -7,10 +7,13 @@ import 'package:flutter/material.dart';
 class CatalogScreenLoadedBody extends StatelessWidget {
   const CatalogScreenLoadedBody({
     required this.models,
+    this.onLogoutPressed,
     super.key,
   });
 
   final List<CatalogSectionModel> models;
+
+  final VoidCallback? onLogoutPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +21,29 @@ class CatalogScreenLoadedBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: CustomScrollView(
         slivers: [
-          const SliverPadding(
-            padding: EdgeInsets.only(top: 12, bottom: 16),
+          SliverPadding(
+            padding: const EdgeInsets.only(top: 12, bottom: 16),
             sliver: SliverToBoxAdapter(
-              child: InputField(
-                hintText: 'Поиск',
-                suffixIcon: Icon(
-                  Icons.search,
-                  color: Colors.white,
-                ),
+              child: Row(
+                children: [
+                  const Expanded(
+                    child: InputField(
+                      hintText: 'Поиск',
+                      suffixIcon: Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  // TODO(Nikita): theme
+                  IconButton(
+                    onPressed: onLogoutPressed,
+                    icon: const Icon(
+                      Icons.logout,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

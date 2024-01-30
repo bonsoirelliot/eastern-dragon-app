@@ -2,9 +2,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class UserDataWorker {
   /// Чтение данных пользователя с устройства
-  static Future<bool?> readUserAuthState() async {
+  static Future<int?> readUserId() async {
     final prefs = await SharedPreferences.getInstance();
-    final rawUserAuthState = prefs.getBool('isAuth');
+    final rawUserAuthState = prefs.getInt('userId');
 
     if (rawUserAuthState == null) return null;
 
@@ -12,9 +12,16 @@ abstract class UserDataWorker {
   }
 
   /// Запись данных пользователя на устройство
-  static Future<void> writeUserAuthState(bool state) async {
+  static Future<void> writeUserId(int userId) async {
     final prefs = await SharedPreferences.getInstance();
 
-    await prefs.setBool('isAuth', state);
+    await prefs.setInt('userId', userId);
+  }
+
+  /// Удаление данных
+  static Future<void> removeUserId() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    await prefs.remove('userId');
   }
 }

@@ -29,7 +29,7 @@ class AuthCodeSection extends StatelessWidget {
           height: 16,
         ),
         Text(
-          'Введите 4-значный код из письма которое пришло вам на почту',
+          'Введите 6-значный код из письма которое пришло вам на почту',
           style: AppStyles.subtitle.copyWith(
             color: Colors.white,
           ),
@@ -40,7 +40,7 @@ class AuthCodeSection extends StatelessWidget {
         Pinput(
           controller: wm.codeController,
           focusNode: wm.codeFocusNode,
-          length: 4,
+          length: 6,
           autofocus: true,
           separatorBuilder: (i) => const SizedBox(width: 18),
           showCursor: false,

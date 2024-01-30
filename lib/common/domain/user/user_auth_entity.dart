@@ -2,24 +2,27 @@ import 'package:eastern_dragon/common/domain/user/user_data_worker.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 
 class UserAuthEntity {
-  ///
-  final _isAuthState = StateNotifier<bool>(initValue: false);
+  final _userIdState = StateNotifier<int>();
 
-  ListenableState<bool> get userAuthListenable => _isAuthState;
+  bool get isAuth => _userIdState.value != null;
 
-  bool get isAuth => _isAuthState.value!;
+  Future<void> setUserAuthState(int state) async {
+    _userIdState.accept(state);
 
-  void setUserAuthState(bool state) {
-    _isAuthState.accept(state);
-
-    UserDataWorker.writeUserAuthState(state);
+    UserDataWorker.writeUserId(state);
   }
 
   Future<void> readUserAuthState() async {
-    final authData = await UserDataWorker.readUserAuthState();
+    final authData = await UserDataWorker.readUserId();
 
     if (authData == null) return;
 
-    _isAuthState.accept(authData);
+    _userIdState.accept(authData);
+  }
+
+  Future<void> logout() async {
+    await UserDataWorker.removeUserId();
+    
+    _userIdState.accept(null);
   }
 }

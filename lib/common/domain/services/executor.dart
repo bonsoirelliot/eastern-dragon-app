@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_catches_without_on_clauses, no_leading_underscores_for_local_identifiers, unnecessary_statements
+// ignore_for_file: avoid_catches_without_on_clauses, no_leading_underscores_for_local_identifiers, unnecessary_statements, prefer_function_declarations_over_variables
 import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:eastern_dragon/common/data/exceptions/access_exception.dart';
@@ -96,7 +96,7 @@ class Executor {
   /// Дефолтная заглушка для задержки между попытками.
   ///
   /// Между каждой попыткой задержка будет 500ms
-  Duration Function(int attempt) _defaultAttemptsDelay =
+  final Duration Function(int attempt) _defaultAttemptsDelay =
       (attempt) => const Duration(milliseconds: 500);
 
   /// Функция, которая производит один вызов [processing] и ее обработку от ошибок

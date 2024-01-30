@@ -5,6 +5,7 @@ import 'package:eastern_dragon/sections/catalog/presentation/catalog_screen.dart
 import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 abstract interface class ICatalogScreenWM implements IWidgetModel {
   /// Секции каталога с товарами
@@ -13,6 +14,8 @@ abstract interface class ICatalogScreenWM implements IWidgetModel {
 
   /// Индекс выбранной секции в фильтре
   ListenableState<int> get selectedSectionListenable;
+
+  Future<void> logout();
 }
 
 CatalogScreenWM defaultCatalogScreenWMFactory(BuildContext context) {
@@ -55,5 +58,12 @@ class CatalogScreenWM extends WidgetModel<CatalogScreen, CatalogScreenModel>
       onSuccess: (data) => _catalogSectionsState.content(data!),
       onError: _catalogSectionsState.error,
     );
+  }
+
+  Future<void> logout() async{
+    await Dependencies.of(context).userAuthEntity.logout();
+
+    // ignore: use_build_context_synchronously
+    context.pushReplacement('/welcome');
   }
 }

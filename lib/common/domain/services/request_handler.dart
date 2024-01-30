@@ -2,6 +2,7 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:eastern_dragon/common/data/models/app_metadata.dart';
+import 'package:eastern_dragon/const/static/static_data.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart' as pp;
 
@@ -216,6 +217,7 @@ class RequestHandler {
   Dio _createDio() {
     final dio = Dio(
       BaseOptions(
+        baseUrl: StaticData.apiUrl,
         connectTimeout: const Duration(milliseconds: 20000),
         receiveTimeout: const Duration(milliseconds: 40000),
       ),

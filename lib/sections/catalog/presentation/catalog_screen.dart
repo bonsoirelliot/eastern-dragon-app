@@ -22,6 +22,7 @@ class CatalogScreen extends ElementaryWidget<ICatalogScreenWM> {
           ),
           builder: (_, models) => CatalogScreenLoadedBody(
             models: models!,
+            onLogoutPressed: wm.logout,
           ),
         ),
       ),

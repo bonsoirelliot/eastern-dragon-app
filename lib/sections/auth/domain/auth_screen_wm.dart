@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:eastern_dragon/common/domain/snackbar_manager/toast_shower.dart';
 import 'package:eastern_dragon/di/dependencies.dart';
 import 'package:eastern_dragon/sections/auth/domain/auth_screen_model.dart';
 import 'package:eastern_dragon/sections/auth/presentation/auth_screen.dart';
@@ -25,7 +26,6 @@ abstract interface class IAuthScreenWM implements IWidgetModel {
 
   FocusNode get codeFocusNode;
 
-
   /// Методы
   Future<void> trySendEmail();
 
@@ -33,11 +33,14 @@ abstract interface class IAuthScreenWM implements IWidgetModel {
 }
 
 AuthScreenWM defaultAuthScreenWMFactory(BuildContext context) {
-  return AuthScreenWM(AuthScreenModel());
+  return AuthScreenWM(
+    AuthScreenModel(
+      requestHandler: Dependencies.of(context).requestHandler,
+    ),
+  );
 }
 
-class AuthScreenWM extends WidgetModel<AuthScreen, AuthScreenModel>
-    implements IAuthScreenWM {
+class AuthScreenWM extends WidgetModel<AuthScreen, AuthScreenModel> implements IAuthScreenWM {
   AuthScreenWM(AuthScreenModel model) : super(model);
 
   @override
@@ -60,11 +63,12 @@ class AuthScreenWM extends WidgetModel<AuthScreen, AuthScreenModel>
 
   final _isButtonAvailableState = StateNotifier<bool>(initValue: false);
 
-  late final userAuthEntity  = Dependencies.of(context).userAuthEntity;
+  late final userAuthEntity = Dependencies.of(context).userAuthEntity;
+
+  late final executor = Dependencies.of(context).executor;
 
   @override
-  ListenableState<bool> get isButtonAvailableListenable =>
-      _isButtonAvailableState;
+  ListenableState<bool> get isButtonAvailableListenable => _isButtonAvailableState;
 
   @override
   void initWidgetModel() {
@@ -86,8 +90,7 @@ class AuthScreenWM extends WidgetModel<AuthScreen, AuthScreenModel>
 
   /// Валидатор для полей
   void _validator() {
-    final emailValidator =
-        RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    final emailValidator = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
 
     final fieldsAreValid = emailValidator.hasMatch(emailController.text) &&
         nameController.text.length > 1 &&
@@ -98,33 +101,39 @@ class AuthScreenWM extends WidgetModel<AuthScreen, AuthScreenModel>
 
   @override
   Future<void> trySendEmail() async {
-    /// Тут типо отправляем email и получаем код
-
     FocusScope.of(context).requestFocus(FocusNode());
 
-    _isButtonAvailableState.accept(false);
+    await executor.execute(
+      () => model.sendEmailCode(emailController.text),
+      before: () => _isButtonAvailableState.accept(false),
+      after: () => _isButtonAvailableState.accept(true),
+      onSuccess: (data) {
+        if (data!) {
+          pageController.animateToPage(
+            1,
+            duration: const Duration(milliseconds: 200),
+            curve: Curves.linear,
+          );
 
-    await Future.delayed(const Duration(seconds: 1));
-
-    _isButtonAvailableState.accept(true);
-
-    pageController.animateToPage(
-      1,
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.linear,
+          codeFocusNode.requestFocus();
+        }
+      },
+      onError: (e) => ToastShower.showError(context, e.title),
     );
-
-    codeFocusNode.requestFocus();
   }
 
   @override
   Future<void> trySendCode() async {
-    /// Тут типо отправляем код
+    await executor.execute(
+      () => model.auth(codeController.text),
+      before: () => _isButtonAvailableState.accept(false),
+      after: () => _isButtonAvailableState.accept(true),
+      onSuccess: (id) {
+        userAuthEntity.setUserAuthState(id!);
 
-    await Future.delayed(const Duration(seconds: 1));
-
-    userAuthEntity.setUserAuthState(true);
-
-    context.push('/catalog');
+        context.pushReplacement('/catalog');
+      },
+      onError: (e) => ToastShower.showError(context, e.title),
+    );
   }
 }
