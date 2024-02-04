@@ -14,10 +14,10 @@ class IconButtonIconColor extends MaterialStateColor {
   @override
   Color resolve(Set<MaterialState> states) {
     if (states.contains(MaterialState.disabled)) {
-      return AppColors.black;
+      return Colors.white.withOpacity(.7);
     }
 
-    return AppColors.black;
+    return Colors.white;
   }
 }
 
@@ -32,12 +32,26 @@ class IconButtonColor extends MaterialStateColor {
       return AppColors.gray;
     }
 
-    if (states.contains(MaterialState.error) ||
-        states.contains(MaterialState.disabled)) {
-      return AppColors.gray;
+    if (states.contains(MaterialState.error) || states.contains(MaterialState.disabled)) {
+      return AppColors.gray.withOpacity(.7);
     }
 
-    return AppColors.lightGray;
+    return AppColors.gray;
   }
 }
 
+class IconButtonShape extends MaterialStateProperty<OutlinedBorder> {
+  @override
+  OutlinedBorder resolve(Set<MaterialState> states) {
+    return RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+    );
+  }
+}
+
+class IconButtonPadding extends MaterialStateProperty<EdgeInsets> {
+  @override
+  EdgeInsets resolve(Set<MaterialState> states) {
+    return const EdgeInsets.symmetric(horizontal: 10, vertical: 9);
+  }
+}

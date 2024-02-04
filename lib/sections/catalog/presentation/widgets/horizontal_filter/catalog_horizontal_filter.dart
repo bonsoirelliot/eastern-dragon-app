@@ -1,3 +1,4 @@
+import 'package:eastern_dragon/const/static/static_data.dart';
 import 'package:eastern_dragon/sections/catalog/presentation/widgets/horizontal_filter/filter_button.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,9 @@ class CatalogHorizontalFilter extends StatelessWidget {
     return SizedBox(
       height: 30,
       child: ListView.separated(
+        padding: const EdgeInsets.symmetric(
+          horizontal: StaticData.defaultSidePadding,
+        ),
         itemBuilder: (_, i) => FilterButton(
           text: items[i],
           isSelected: i == 0,

@@ -64,4 +64,12 @@ class AppStyles {
     height: 1.2,
     color: Colors.white,
   );
+
+  static const appTitle = TextStyle(
+    fontFamily: 'AlumniSans',
+    fontWeight: FontWeight.w500,
+    fontSize: 24,
+    height: 1.2,
+    color: Colors.white,
+  );
 }

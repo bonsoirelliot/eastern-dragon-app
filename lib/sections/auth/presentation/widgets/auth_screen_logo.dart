@@ -1,3 +1,4 @@
+import 'package:eastern_dragon/common/generated/assets.dart';
 import 'package:flutter/material.dart';
 
 class AuthScreenLogo extends StatelessWidget {
@@ -12,7 +13,7 @@ class AuthScreenLogo extends StatelessWidget {
           maxWidth: 140,
         ),
         child: Image.asset(
-          'assets/images/logo.png',
+          R.ASSETS_IMAGES_LOGO_PNG,
         ),
       ),
     );

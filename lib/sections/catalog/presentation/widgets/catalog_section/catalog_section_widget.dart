@@ -1,3 +1,4 @@
+import 'package:eastern_dragon/const/static/static_data.dart';
 import 'package:eastern_dragon/const/theme/styles.dart';
 import 'package:eastern_dragon/sections/catalog/data/catalog_section_model.dart';
 import 'package:eastern_dragon/sections/catalog/presentation/widgets/catalog_element/catalog_element_widget.dart';
@@ -13,30 +14,35 @@ class CatalogSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverMainAxisGroup(
-      slivers: [
-        SliverPadding(
-          padding: const EdgeInsets.only(bottom: 16),
-          sliver: SliverToBoxAdapter(
-            child: Text(
-              model.name,
-              style: AppStyles.h1,
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: StaticData.defaultSidePadding,
+      ),
+      sliver: SliverMainAxisGroup(
+        slivers: [
+          SliverPadding(
+            padding: const EdgeInsets.only(bottom: 16),
+            sliver: SliverToBoxAdapter(
+              child: Text(
+                model.name,
+                style: AppStyles.h1,
+              ),
             ),
           ),
-        ),
-        SliverList.separated(
-          itemBuilder: (_, i) => CatalogElementWidget(
-            model: model.items[i],
+          SliverList.separated(
+            itemBuilder: (_, i) => CatalogElementWidget(
+              model: model.items[i],
+            ),
+            separatorBuilder: (_, i) => const SizedBox(height: 12),
+            itemCount: model.items.length,
           ),
-          separatorBuilder: (_, i) => const SizedBox(height: 12),
-          itemCount: model.items.length,
-        ),
-        const SliverToBoxAdapter(
-          child: SizedBox(
-            height: 30,
+          const SliverToBoxAdapter(
+            child: SizedBox(
+              height: 30,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -5,17 +5,20 @@ import 'package:eastern_dragon/sections/catalog/presentation/catalog_screen.dart
 import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 
 abstract interface class ICatalogScreenWM implements IWidgetModel {
   /// Секции каталога с товарами
-  EntityValueListenable<List<CatalogSectionModel>>
-      get catalogSectionsListenable;
+  EntityValueListenable<List<CatalogSectionModel>> get catalogSectionsListenable;
 
   /// Индекс выбранной секции в фильтре
   ListenableState<int> get selectedSectionListenable;
 
-  Future<void> logout();
+  ListenableState<bool> get isDrawerOpenListenable;
+
+  Future<void> toggleDrawer();
+
+  GlobalKey<SliderDrawerState> get sliderKey;
 }
 
 CatalogScreenWM defaultCatalogScreenWMFactory(BuildContext context) {
@@ -26,21 +29,26 @@ CatalogScreenWM defaultCatalogScreenWMFactory(BuildContext context) {
   );
 }
 
-class CatalogScreenWM extends WidgetModel<CatalogScreen, CatalogScreenModel>
-    implements ICatalogScreenWM {
+class CatalogScreenWM extends WidgetModel<CatalogScreen, CatalogScreenModel> implements ICatalogScreenWM {
   CatalogScreenWM(CatalogScreenModel model) : super(model);
 
+  final _isDrawerOpenState = StateNotifier<bool>(initValue: false);
+
+  @override
+  final sliderKey = GlobalKey<SliderDrawerState>();
+
   late final executor = Dependencies.of(context).executor;
+
+  @override
+  ListenableState<bool> get isDrawerOpenListenable => _isDrawerOpenState;
 
   @override
   ListenableState<int> get selectedSectionListenable => _selectedSectionState;
 
   @override
-  EntityValueListenable<List<CatalogSectionModel>>
-      get catalogSectionsListenable => _catalogSectionsState;
+  EntityValueListenable<List<CatalogSectionModel>> get catalogSectionsListenable => _catalogSectionsState;
 
-  final _catalogSectionsState =
-      EntityStateNotifier<List<CatalogSectionModel>>();
+  final _catalogSectionsState = EntityStateNotifier<List<CatalogSectionModel>>();
 
   final _selectedSectionState = StateNotifier<int>(initValue: 0);
 
@@ -60,10 +68,9 @@ class CatalogScreenWM extends WidgetModel<CatalogScreen, CatalogScreenModel>
     );
   }
 
-  Future<void> logout() async{
-    await Dependencies.of(context).userAuthEntity.logout();
-
-    // ignore: use_build_context_synchronously
-    context.pushReplacement('/welcome');
+  @override
+  Future<void> toggleDrawer() async {
+    sliderKey.currentState?.toggle();
+    _isDrawerOpenState.accept(!_isDrawerOpenState.value!);
   }
 }

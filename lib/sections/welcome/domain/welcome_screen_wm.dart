@@ -11,8 +11,7 @@ WelcomeScreenWM defaultWelcomeScreenWMFactory(BuildContext context) {
   return WelcomeScreenWM(WelcomeScreenModel());
 }
 
-class WelcomeScreenWM extends WidgetModel<WelcomeScreen, WelcomeScreenModel>
-    implements IWelcomeScreenWM {
+class WelcomeScreenWM extends WidgetModel<WelcomeScreen, WelcomeScreenModel> implements IWelcomeScreenWM {
   WelcomeScreenWM(WelcomeScreenModel model) : super(model);
 
   late final userAuthEntity = Dependencies.of(context).userAuthEntity;
@@ -28,9 +27,8 @@ class WelcomeScreenWM extends WidgetModel<WelcomeScreen, WelcomeScreenModel>
 
     await userAuthEntity.readUserAuthState();
 
-
     // ignore: use_build_context_synchronously
-    context.push(
+    context.pushReplacement(
       userAuthEntity.isAuth ? '/catalog' : '/auth',
     );
   }
