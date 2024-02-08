@@ -19,6 +19,10 @@ abstract interface class ICatalogScreenWM implements IWidgetModel {
   Future<void> toggleDrawer();
 
   GlobalKey<SliderDrawerState> get sliderKey;
+
+  Future<void> loadCatalog();
+
+  Color get backgroundColor;
 }
 
 CatalogScreenWM defaultCatalogScreenWMFactory(BuildContext context) {
@@ -31,6 +35,9 @@ CatalogScreenWM defaultCatalogScreenWMFactory(BuildContext context) {
 
 class CatalogScreenWM extends WidgetModel<CatalogScreen, CatalogScreenModel> implements ICatalogScreenWM {
   CatalogScreenWM(CatalogScreenModel model) : super(model);
+
+  @override
+  late final backgroundColor = Theme.of(context).scaffoldBackgroundColor;
 
   final _isDrawerOpenState = StateNotifier<bool>(initValue: false);
 
@@ -59,6 +66,7 @@ class CatalogScreenWM extends WidgetModel<CatalogScreen, CatalogScreenModel> imp
     loadCatalog();
   }
 
+  @override
   Future<void> loadCatalog() async {
     await executor.execute(
       model.loadCatalog,

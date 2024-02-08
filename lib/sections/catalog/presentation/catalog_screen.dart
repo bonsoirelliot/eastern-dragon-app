@@ -1,3 +1,6 @@
+import 'package:eastern_dragon/common/data/exceptions/custom_exception.dart';
+import 'package:eastern_dragon/common/presentation/widgets/default_error_widget.dart';
+import 'package:eastern_dragon/common/presentation/widgets/default_loading_indicator.dart';
 import 'package:eastern_dragon/sections/catalog/domain/catalog_screen_wm.dart';
 import 'package:eastern_dragon/sections/catalog/presentation/widgets/catalog_screen_loaded_body.dart';
 import 'package:eastern_dragon/sections/catalog/presentation/widgets/drawer/custom_drawer.dart';
@@ -28,15 +31,25 @@ class CatalogScreen extends ElementaryWidget<ICatalogScreenWM> {
             );
           },
         ),
-        child: EntityStateNotifierBuilder(
-          listenableEntityState: wm.catalogSectionsListenable,
-          errorBuilder: (_, e, __) => const SizedBox(),
-          loadingBuilder: (_, __) => const Center(
-            child: CircularProgressIndicator.adaptive(),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: wm.backgroundColor,
           ),
-          builder: (_, models) => CatalogScreenLoadedBody(
-            models: models!,
-            onProfilePressed: wm.toggleDrawer,
+          child: EntityStateNotifierBuilder(
+            listenableEntityState: wm.catalogSectionsListenable,
+            errorBuilder: (_, e, __) {
+              e as CustomException;
+              return DefaultErrorWidget(
+                title: e.title,
+                subtitle: e.subtitle,
+                onPressed: wm.loadCatalog,
+              );
+            },
+            loadingBuilder: (_, __) => const DefaultLoadingIndicator(),
+            builder: (_, models) => CatalogScreenLoadedBody(
+              models: models!,
+              onProfilePressed: wm.toggleDrawer,
+            ),
           ),
         ),
       ),

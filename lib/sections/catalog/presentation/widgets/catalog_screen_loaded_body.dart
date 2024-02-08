@@ -21,72 +21,69 @@ class CatalogScreenLoadedBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: SafeArea(
-        bottom: false,
-        child: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              leading: const SizedBox(),
-              backgroundColor: AppColors.black,
-              scrolledUnderElevation: 0,
-              floating: true,
-              toolbarHeight: 72,
-              expandedHeight: 72,
-              collapsedHeight: 72,
-              flexibleSpace: Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  StaticData.defaultSidePadding,
-                  12,
-                  StaticData.defaultSidePadding,
-                  16,
-                ),
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: onProfilePressed,
-                      icon: SvgPicture.asset(
-                        R.ASSETS_ICONS_USER_SVG,
+    return SafeArea(
+      bottom: false,
+      child: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            leading: const SizedBox(),
+            backgroundColor: AppColors.black,
+            scrolledUnderElevation: 0,
+            floating: true,
+            toolbarHeight: 72,
+            expandedHeight: 72,
+            collapsedHeight: 72,
+            flexibleSpace: Padding(
+              padding: const EdgeInsets.fromLTRB(
+                StaticData.defaultSidePadding,
+                12,
+                StaticData.defaultSidePadding,
+                16,
+              ),
+              child: Row(
+                children: [
+                  IconButton(
+                    onPressed: onProfilePressed,
+                    icon: SvgPicture.asset(
+                      R.ASSETS_ICONS_USER_SVG,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  const Expanded(
+                    child: InputField(
+                      hintText: 'Поиск',
+                      suffixIcon: Icon(
+                        Icons.search,
+                        color: Colors.white,
                       ),
                     ),
-                    const SizedBox(width: 8),
-                    const Expanded(
-                      child: InputField(
-                        hintText: 'Поиск',
-                        suffixIcon: Icon(
-                          Icons.search,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-            SliverAppBar(
-              toolbarHeight: 38,
-              expandedHeight: 38,
-              collapsedHeight: 38,
-              backgroundColor: AppColors.black,
-              scrolledUnderElevation: 0,
-              pinned: true,
-              flexibleSpace: CatalogHorizontalFilter(
-                items: models.map((e) => e.name).toList(),
-              ),
+          ),
+          SliverAppBar(
+            toolbarHeight: 38,
+            expandedHeight: 38,
+            collapsedHeight: 38,
+            backgroundColor: AppColors.black,
+            scrolledUnderElevation: 0,
+            pinned: true,
+            flexibleSpace: CatalogHorizontalFilter(
+              items: models.map((e) => e.name).toList(),
             ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 16,
-              ),
+          ),
+          const SliverToBoxAdapter(
+            child: SizedBox(
+              height: 16,
             ),
-            ...models.map(
-              (section) => CatalogSectionWidget(
-                model: section,
-              ),
+          ),
+          ...models.map(
+            (section) => CatalogSectionWidget(
+              model: section,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -32,4 +32,7 @@ final appTheme = ThemeData(
       foregroundColor: IconButtonIconColor(),
     ),
   ),
+  progressIndicatorTheme: const ProgressIndicatorThemeData(
+    color: AppColors.red,
+  ),
 );
