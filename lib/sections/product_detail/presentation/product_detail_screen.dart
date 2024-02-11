@@ -2,19 +2,19 @@ import 'package:eastern_dragon/common/data/exceptions/custom_exception.dart';
 import 'package:eastern_dragon/common/presentation/widgets/default_error_widget.dart';
 import 'package:eastern_dragon/common/presentation/widgets/default_loading_indicator.dart';
 import 'package:eastern_dragon/const/static/static_data.dart';
-import 'package:eastern_dragon/sections/lunch_detail/domain/lunch_detail_screen_wm.dart';
-import 'package:eastern_dragon/sections/lunch_detail/presentation/widgets/lunch_detail_loaded_body.dart';
+import 'package:eastern_dragon/sections/product_detail/domain/product_detail_screen_wm.dart';
+import 'package:eastern_dragon/sections/product_detail/presentation/widgets/product_detail_loaded_body.dart';
 import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
 
-class LunchDetailScreen extends ElementaryWidget<ILunchDetailScreenWM> {
-  const LunchDetailScreen({
+class ProductDetailScreen extends ElementaryWidget<IProductDetailScreenWM> {
+  const ProductDetailScreen({
     required this.id,
     required this.controller,
     super.key,
   }) : super(
-          defaultLunchDetailScreenWMFactory,
+          defaultProductDetailScreenWMFactory,
         );
 
   final int id;
@@ -22,7 +22,7 @@ class LunchDetailScreen extends ElementaryWidget<ILunchDetailScreenWM> {
   final ScrollController controller;
 
   @override
-  Widget build(ILunchDetailScreenWM wm) {
+  Widget build(IProductDetailScreenWM wm) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -34,7 +34,7 @@ class LunchDetailScreen extends ElementaryWidget<ILunchDetailScreenWM> {
               controller: controller,
               slivers: [
                 EntityStateNotifierBuilder(
-                  listenableEntityState: wm.lunchDetailListenable,
+                  listenableEntityState: wm.productDetailListenable,
                   loadingBuilder: (_, __) => const SliverFillRemaining(
                     child: DefaultLoadingIndicator(),
                   ),
@@ -48,7 +48,7 @@ class LunchDetailScreen extends ElementaryWidget<ILunchDetailScreenWM> {
                       ),
                     );
                   },
-                  builder: (_, model) => LunchDetailLoadedBody(
+                  builder: (_, model) => ProductDetailLoadedBody(
                     model: model!,
                   ),
                 )

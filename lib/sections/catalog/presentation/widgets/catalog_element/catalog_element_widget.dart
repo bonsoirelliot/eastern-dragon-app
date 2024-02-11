@@ -1,10 +1,10 @@
-import 'package:bottom_sheet/bottom_sheet.dart';
-import 'package:eastern_dragon/common/domain/snackbar_manager/toast_shower.dart';
+import 'package:eastern_dragon/common/domain/snackbars_and_sheets/bottom_sheet_shower.dart';
 import 'package:eastern_dragon/common/presentation/widgets/image_or_svg.dart';
 import 'package:eastern_dragon/const/theme/app_colors.dart';
 import 'package:eastern_dragon/sections/catalog/data/catalog_item_model.dart';
 import 'package:eastern_dragon/sections/catalog/presentation/widgets/catalog_element/catalog_element_info_widget.dart';
 import 'package:eastern_dragon/sections/lunch_detail/presentation/lunch_detail_screen.dart';
+import 'package:eastern_dragon/sections/product_detail/presentation/product_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class CatalogElementWidget extends StatelessWidget {
@@ -19,24 +19,18 @@ class CatalogElementWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (model.isLunch) {
-          showFlexibleBottomSheet(
-            context: context,
-            initHeight: 1,
-            isSafeArea: true,
-            duration: const Duration(milliseconds: 200),
-            anchors: [1],
-            builder: (_, controller, __) => LunchDetailScreen(
-              id: model.id,
-              controller: controller,
-            ),
-          );
-        } else {
-          ToastShower.showNotification(
-            context,
-            'В работе',
-          );
-        }
+        BottomSheetShower.showDefaultFlexibleBottomSheet(
+          context,
+          builder: (_, controller, __) => model.isLunch
+              ? LunchDetailScreen(
+                  id: model.id,
+                  controller: controller,
+                )
+              : ProductDetailScreen(
+                  id: model.id,
+                  controller: controller,
+                ),
+        );
       },
       child: DecoratedBox(
         decoration: BoxDecoration(

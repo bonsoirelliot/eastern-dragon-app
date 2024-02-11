@@ -15,6 +15,9 @@ class LunchDetailLoadedBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverMainAxisGroup(
       slivers: [
+        const SliverToBoxAdapter(
+          child: SizedBox(height: 12),
+        ),
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.only(bottom: 12.0),

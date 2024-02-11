@@ -46,9 +46,17 @@ class CatalogScreen extends ElementaryWidget<ICatalogScreenWM> {
               );
             },
             loadingBuilder: (_, __) => const DefaultLoadingIndicator(),
-            builder: (_, models) => CatalogScreenLoadedBody(
-              models: models!,
-              onProfilePressed: wm.toggleDrawer,
+            builder: (_, models) => StateNotifierBuilder<bool>(
+              listenableState: wm.isDrawerOpenListenable,
+              builder: (_, isDrawerOpen) {
+                return IgnorePointer(
+                  ignoring: isDrawerOpen!,
+                  child: CatalogScreenLoadedBody(
+                    models: wm.sectionsWithKey,
+                    wm: wm,
+                  ),
+                );
+              },
             ),
           ),
         ),

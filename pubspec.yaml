@@ -31,6 +31,7 @@ dependencies:
   path_provider: ^2.1.1
   pinput: ^3.0.1
   responsive_framework: ^1.1.1
+  scroll_to_index: ^3.0.1
   shared_preferences: ^2.2.2
   shimmer: ^3.0.0
 
