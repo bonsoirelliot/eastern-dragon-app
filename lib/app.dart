@@ -1,7 +1,7 @@
-import 'package:eastern_dragon/const/theme/light_theme.dart';
-import 'package:eastern_dragon/di/dependencies.dart';
-import 'package:eastern_dragon/di/inherited_dependencies.dart';
-import 'package:eastern_dragon/router/router.dart';
+import 'package:eastern_dragon/core/const/theme/light_theme.dart';
+import 'package:eastern_dragon/core/di/dependencies.dart';
+import 'package:eastern_dragon/core/di/inherited_dependencies.dart';
+import 'package:eastern_dragon/core/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
