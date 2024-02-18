@@ -8,6 +8,7 @@ environment:
   sdk: '>=3.1.3 <4.0.0'
 
 dependencies:
+  bottom_sheet: ^4.0.0
   cached_network_image: ^3.3.1
   cookie_jar: ^4.0.8
   cupertino_icons: ^1.0.2
@@ -22,6 +23,7 @@ dependencies:
   flutter_svg: ^2.0.9
   fluttertoast: ^8.2.4
   go_router: ^11.1.2
+  json_annotation: ^4.8.1
   logger: ^2.0.2+1
   mask_text_input_formatter: ^2.7.0
   mobile_device_identifier: ^0.0.2
@@ -29,6 +31,7 @@ dependencies:
   path_provider: ^2.1.1
   pinput: ^3.0.1
   responsive_framework: ^1.1.1
+  scroll_to_index: ^3.0.1
   shared_preferences: ^2.2.2
   shimmer: ^3.0.0
 

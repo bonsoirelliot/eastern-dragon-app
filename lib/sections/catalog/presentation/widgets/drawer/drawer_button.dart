@@ -6,6 +6,7 @@ class CustomDrawerButton extends StatelessWidget {
   const CustomDrawerButton({
     required this.icon,
     required this.title,
+    this.onPressed,
     this.color,
     super.key,
   });
@@ -16,25 +17,30 @@ class CustomDrawerButton extends StatelessWidget {
 
   final Color? color;
 
+  final VoidCallback? onPressed;
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SvgPicture.asset(
-          icon,
-          height: 24,
-          width: 24,
-          color: color,
-        ),
-        const SizedBox(width: 8),
-        Text(
-          title,
-          style: AppStyles.caption.copyWith(
+    return GestureDetector(
+      onTap: onPressed,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            icon,
+            height: 24,
+            width: 24,
             color: color,
           ),
-        ),
-      ],
+          const SizedBox(width: 8),
+          Text(
+            title,
+            style: AppStyles.caption.copyWith(
+              color: color,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

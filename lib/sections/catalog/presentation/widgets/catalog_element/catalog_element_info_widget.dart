@@ -1,10 +1,16 @@
 import 'package:eastern_dragon/const/theme/styles.dart';
 import 'package:eastern_dragon/const/theme/theme_constants/button_constants.dart';
 import 'package:eastern_dragon/const/theme/theme_constants/filled_button_color_constants.dart';
+import 'package:eastern_dragon/sections/catalog/data/catalog_item_model.dart';
 import 'package:flutter/material.dart';
 
 class CatalogElementInfoWidget extends StatelessWidget {
-  const CatalogElementInfoWidget({super.key});
+  const CatalogElementInfoWidget({
+    required this.model,
+    super.key,
+  });
+
+  final CatalogItemModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -12,26 +18,27 @@ class CatalogElementInfoWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Column(
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Обед №1',
+              model.name,
               style: AppStyles.h2,
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Text(
-              'Рис, 2 горячих, 2 салата',
+              model.compound,
               style: AppStyles.caption,
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
           ],
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Flexible(
+            Flexible(
               child: Text(
-                '200 гр / 200 гр / 200 гр',
+                model.weights,
                 style: AppStyles.caption,
               ),
             ),
@@ -42,8 +49,8 @@ class CatalogElementInfoWidget extends StatelessWidget {
                     padding: SquareFilledButtonPadding(),
                   ),
               onPressed: () {},
-              child: const Text(
-                'от 350 ₽',
+              child: Text(
+                'от ${model.price} ₽',
               ),
             ),
           ],

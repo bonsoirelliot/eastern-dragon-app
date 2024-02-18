@@ -1,23 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'catalog_item_model.dart';
+part of 'lunch_ingridient_option_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CatalogItemModel _$CatalogItemModelFromJson(Map<String, dynamic> json) =>
+LunchIngridientOptionModel _$LunchIngridientOptionModelFromJson(
+        Map<String, dynamic> json) =>
     $checkedCreate(
-      'CatalogItemModel',
+      'LunchIngridientOptionModel',
       json,
       ($checkedConvert) {
-        final val = CatalogItemModel(
+        final val = LunchIngridientOptionModel(
           id: $checkedConvert('id', (v) => v as int),
           name: $checkedConvert('name', (v) => v as String),
-          compound: $checkedConvert('compound', (v) => v as String),
-          weights: $checkedConvert('weights', (v) => v as String),
-          price: $checkedConvert('price', (v) => v as String),
-          isLunch: $checkedConvert('isLunch', (v) => v as bool),
           image: $checkedConvert(
               'image',
               (v) => (v as List<dynamic>?)
@@ -29,13 +26,10 @@ CatalogItemModel _$CatalogItemModelFromJson(Map<String, dynamic> json) =>
       },
     );
 
-Map<String, dynamic> _$CatalogItemModelToJson(CatalogItemModel instance) =>
+Map<String, dynamic> _$LunchIngridientOptionModelToJson(
+        LunchIngridientOptionModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'compound': instance.compound,
-      'weights': instance.weights,
       'image': instance.image,
-      'price': instance.price,
-      'isLunch': instance.isLunch,
     };

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shimmer/shimmer.dart';
 
+
+// TODO(nikita): добавить заглушку
 class ImageOrSvg extends StatelessWidget {
   const ImageOrSvg(
     this.image, {

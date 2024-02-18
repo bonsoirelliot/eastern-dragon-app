@@ -1,6 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:eastern_dragon/common/domain/snackbar_manager/toast_shower.dart';
+import 'package:eastern_dragon/common/domain/snackbars_and_sheets/toast_shower.dart';
 import 'package:eastern_dragon/di/dependencies.dart';
 import 'package:eastern_dragon/sections/auth/domain/auth_screen_model.dart';
 import 'package:eastern_dragon/sections/auth/presentation/auth_screen.dart';

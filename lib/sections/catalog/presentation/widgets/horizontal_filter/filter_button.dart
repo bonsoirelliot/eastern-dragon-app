@@ -6,12 +6,15 @@ class FilterButton extends StatelessWidget {
   const FilterButton({
     required this.text,
     required this.isSelected,
+    this.onPressed,
     super.key,
   });
 
   final String text;
 
   final bool isSelected;
+
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class FilterButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(20),
       color: currentColor,
       child: InkWell(
-        onTap: () {},
+        onTap: onPressed,
         borderRadius: BorderRadius.circular(20),
         overlayColor: MaterialStateColor.resolveWith(
           (states) => currentColor.withRed(200),
