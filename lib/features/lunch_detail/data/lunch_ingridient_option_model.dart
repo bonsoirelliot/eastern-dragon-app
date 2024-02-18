@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'lunch_ingridient_option_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class LunchIngridientOptionModel {
   final int id;
 

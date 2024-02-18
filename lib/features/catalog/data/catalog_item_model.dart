@@ -6,7 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'catalog_item_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class CatalogItemModel {
   final int id;
 

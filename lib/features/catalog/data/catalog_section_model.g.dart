@@ -24,11 +24,3 @@ CatalogSectionModel _$CatalogSectionModelFromJson(Map<String, dynamic> json) =>
         return val;
       },
     );
-
-Map<String, dynamic> _$CatalogSectionModelToJson(
-        CatalogSectionModel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'items': instance.items,
-    };

@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'image_network_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class ImageNetworkModel {
   final String src;
 

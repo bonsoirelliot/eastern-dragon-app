@@ -24,10 +24,3 @@ LunchIngridientModel _$LunchIngridientModelFromJson(
         return val;
       },
     );
-
-Map<String, dynamic> _$LunchIngridientModelToJson(
-        LunchIngridientModel instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'options': instance.options,
-    };

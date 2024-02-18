@@ -28,14 +28,3 @@ CatalogItemModel _$CatalogItemModelFromJson(Map<String, dynamic> json) =>
         return val;
       },
     );
-
-Map<String, dynamic> _$CatalogItemModelToJson(CatalogItemModel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'compound': instance.compound,
-      'weights': instance.weights,
-      'image': instance.image,
-      'price': instance.price,
-      'isLunch': instance.isLunch,
-    };

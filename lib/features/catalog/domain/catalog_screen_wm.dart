@@ -177,7 +177,7 @@ class CatalogScreenWM extends WidgetModel<CatalogScreen, CatalogScreenModel> imp
     if (_selectedSectionState.value == index) return;
     isScrolling = true;
     _selectedSectionState.accept(index);
-    debugPrint('AZAZAZ ${sectionsWithKey}');
+    // debugPrint('AZAZAZ ${sectionsWithKey}');
     await bodyScrollController.animateTo(
       _sectionsPositions[index],
       duration: const Duration(milliseconds: 200),

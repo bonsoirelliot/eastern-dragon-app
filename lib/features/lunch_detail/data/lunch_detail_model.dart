@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'lunch_detail_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class LunchDetailModel {
   final String name;
 

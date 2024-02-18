@@ -23,9 +23,3 @@ LunchDetailModel _$LunchDetailModelFromJson(Map<String, dynamic> json) =>
         return val;
       },
     );
-
-Map<String, dynamic> _$LunchDetailModelToJson(LunchDetailModel instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'ingredients': instance.ingredients,
-    };

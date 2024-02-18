@@ -19,10 +19,3 @@ ImageNetworkModel _$ImageNetworkModelFromJson(Map<String, dynamic> json) =>
         return val;
       },
     );
-
-Map<String, dynamic> _$ImageNetworkModelToJson(ImageNetworkModel instance) =>
-    <String, dynamic>{
-      'src': instance.src,
-      'width': instance.width,
-      'height': instance.height,
-    };
