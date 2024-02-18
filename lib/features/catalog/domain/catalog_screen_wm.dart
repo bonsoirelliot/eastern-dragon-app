@@ -7,7 +7,6 @@ import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
@@ -125,7 +124,9 @@ class CatalogScreenWM extends WidgetModel<CatalogScreen, CatalogScreenModel> imp
   }
 
   void sectionsValueListener() {
-    if (catalogSectionsListenable.value.isErrorState || catalogSectionsListenable.value.isLoadingState) {
+    if (catalogSectionsListenable.value.isErrorState ||
+        catalogSectionsListenable.value.isLoadingState ||
+        catalogSectionsListenable.value.data == null) {
       return;
     }
 
@@ -140,12 +141,9 @@ class CatalogScreenWM extends WidgetModel<CatalogScreen, CatalogScreenModel> imp
           ),
     );
 
-    SchedulerBinding.instance.addPostFrameCallback(
-      (_) {
-        ///Рассчитываем позицию для всех секций
-        // _calculateSectionsPositions().then((value) => _areSizesCalculatedState.accept(true));
-        _calculateSectionsPositions();
-      },
+    Future.delayed(
+      const Duration(milliseconds: 200),
+      () => _calculateSectionsPositions(),
     );
   }
 
@@ -195,15 +193,17 @@ class CatalogScreenWM extends WidgetModel<CatalogScreen, CatalogScreenModel> imp
   /// Вычисление позиций элементов каталога по списку ключей каталога
   ///
   /// Также здесь вычисляется массив отрезков для повышения производительности.
-  Future<void> _calculateSectionsPositions() async {
-    _sectionsPositions = sectionsWithKey
-        .map(
-          (category) => _calculatePosition(
-            category.key,
-            maxScrollExtent: bodyScrollController.position.maxScrollExtent,
-          ),
-        )
-        .toList();
+  void _calculateSectionsPositions() {
+    debugPrint('sectionsWithKey: $sectionsWithKey');
+
+    for (var category in sectionsWithKey) {
+      final pos = _calculatePosition(
+        category.key,
+        maxScrollExtent: bodyScrollController.position.maxScrollExtent,
+      );
+
+      _sectionsPositions.add(pos);
+    }
   }
 
   /// Вычисление offset по ключу [key].

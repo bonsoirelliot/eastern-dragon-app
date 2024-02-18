@@ -7,10 +7,13 @@ import 'package:flutter/material.dart';
 class CatalogSectionWidget extends StatelessWidget {
   const CatalogSectionWidget({
     required this.model,
+    required this.globalKey,
     super.key,
   });
 
   final CatalogSectionModel model;
+
+  final GlobalKey globalKey;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +29,7 @@ class CatalogSectionWidget extends StatelessWidget {
               child: Text(
                 model.name,
                 style: AppStyles.h1,
+                key: globalKey,
               ),
             ),
           ),

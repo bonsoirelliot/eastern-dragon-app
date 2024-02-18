@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:eastern_dragon/core/common/generated/assets.dart';
 import 'package:eastern_dragon/core/const/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shimmer/shimmer.dart';
-
 
 // TODO(nikita): добавить заглушку
 class ImageOrSvg extends StatelessWidget {
@@ -45,10 +45,9 @@ class ImageOrSvg extends StatelessWidget {
                 width: width,
                 fit: fit,
                 fadeInDuration: const Duration(milliseconds: 100),
-                errorWidget: (_, __, ___) => Container(
+                errorWidget: (_, __, ___) => _Paceholder(
                   height: height,
                   width: width,
-                  color: AppColors.lightGray,
                 ),
                 placeholder: (_, __) => Shimmer.fromColors(
                   baseColor: AppColors.lightGray,
@@ -59,10 +58,34 @@ class ImageOrSvg extends StatelessWidget {
                 ),
                 alignment: alignment,
               )
-        : Container(
+        : _Paceholder(
             height: height,
             width: width,
-            color: AppColors.lightGray,
           );
+  }
+}
+
+class _Paceholder extends StatelessWidget {
+  const _Paceholder({
+    this.height,
+    this.width,
+    super.key,
+  });
+
+  final double? height;
+
+  final double? width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: width,
+      color: AppColors.lightGray,
+      child: Image.asset(
+        R.ASSETS_IMAGES_LOGO_PNG,
+        color: AppColors.gray,
+      ),
+    );
   }
 }

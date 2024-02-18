@@ -92,6 +92,7 @@ class CatalogScreenLoadedBody extends StatelessWidget {
           ...models.map(
             (section) => CatalogSectionWidget(
               model: section.model,
+              globalKey: section.key,
             ),
           ),
         ],
