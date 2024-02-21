@@ -1,6 +1,6 @@
 import 'package:eastern_dragon/features/catalog/data/catalog_section_with_key_model.dart';
+import 'package:eastern_dragon/generated/assets.dart';
 import 'package:elementary_helper/elementary_helper.dart';
-import 'package:eastern_dragon/core/common/generated/assets.dart';
 import 'package:eastern_dragon/core/common/presentation/widgets/input_field/input_field.dart';
 import 'package:eastern_dragon/core/const/static/static_data.dart';
 import 'package:eastern_dragon/core/const/theme/app_colors.dart';

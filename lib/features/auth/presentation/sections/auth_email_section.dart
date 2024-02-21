@@ -2,6 +2,7 @@ import 'package:eastern_dragon/core/common/presentation/widgets/input_field/inpu
 import 'package:eastern_dragon/core/const/theme/styles.dart';
 import 'package:eastern_dragon/features/auth/domain/auth_screen_wm.dart';
 import 'package:eastern_dragon/features/auth/presentation/widgets/auth_screen_logo.dart';
+import 'package:eastern_dragon/generated/l10n.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
 
@@ -23,8 +24,8 @@ class AuthEmailSection extends StatelessWidget {
         const SizedBox(
           height: 40,
         ),
-        const Text(
-          'Регистрация',
+        Text(
+          S.of(context).registration,
           style: AppStyles.h1,
         ),
         Padding(
@@ -32,7 +33,7 @@ class AuthEmailSection extends StatelessWidget {
           child: Column(
             children: [
               InputField(
-                hintText: 'Имя',
+                hintText: S.of(context).name,
                 keyboardType: TextInputType.name,
                 controller: wm.nameController,
                 focusNode: wm.nameFocusNode,
@@ -41,7 +42,7 @@ class AuthEmailSection extends StatelessWidget {
                 height: 12,
               ),
               InputField(
-                hintText: 'E-mail',
+                hintText: S.of(context).email,
                 keyboardType: TextInputType.emailAddress,
                 controller: wm.emailController,
               ),
@@ -53,7 +54,7 @@ class AuthEmailSection extends StatelessWidget {
           builder: (_, isAvailable) {
             return FilledButton(
               onPressed: isAvailable! ? wm.trySendEmail : null,
-              child: const Text('Продолжить'),
+              child: Text(S.of(context).continue_title),
             );
           },
         ),

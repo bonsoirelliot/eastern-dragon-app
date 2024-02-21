@@ -3,6 +3,7 @@ import 'package:eastern_dragon/core/common/presentation/widgets/image_or_svg.dar
 import 'package:eastern_dragon/core/const/theme/app_colors.dart';
 import 'package:eastern_dragon/features/catalog/data/catalog_item_model.dart';
 import 'package:eastern_dragon/features/catalog/presentation/widgets/catalog_element/catalog_element_info_widget.dart';
+import 'package:eastern_dragon/features/catalog/presentation/widgets/add_to_cart_bottom_sheet/catalog_element_add_to_cart_bottom_sheet.dart';
 import 'package:eastern_dragon/features/lunch_detail/presentation/lunch_detail_screen.dart';
 import 'package:eastern_dragon/features/product_detail/presentation/product_detail_screen.dart';
 import 'package:flutter/material.dart';
@@ -21,15 +22,14 @@ class CatalogElementWidget extends StatelessWidget {
       onTap: () {
         BottomSheetShower.showDefaultFlexibleBottomSheet(
           context,
-          builder: (_, controller, __) => model.isLunch
+          widget: model.isLunch
               ? LunchDetailScreen(
                   id: model.id,
-                  controller: controller,
                 )
               : ProductDetailScreen(
                   id: model.id,
-                  controller: controller,
                 ),
+          bottomSheet: CatalogElementAddToCartBottomSheet(model: model),
         );
       },
       child: DecoratedBox(

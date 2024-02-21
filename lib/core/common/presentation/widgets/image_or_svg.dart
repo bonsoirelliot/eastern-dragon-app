@@ -1,11 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:eastern_dragon/core/common/generated/assets.dart';
 import 'package:eastern_dragon/core/const/theme/app_colors.dart';
+import 'package:eastern_dragon/generated/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shimmer/shimmer.dart';
 
-// TODO(nikita): добавить заглушку
 class ImageOrSvg extends StatelessWidget {
   const ImageOrSvg(
     this.image, {
@@ -14,7 +13,6 @@ class ImageOrSvg extends StatelessWidget {
     this.fit = BoxFit.contain,
     this.alignment = Alignment.center,
     this.placeholderHeight = 32,
-    // this.placeholder = PlaceholderType.wideContainer,
     super.key,
   });
 
@@ -69,7 +67,6 @@ class _Paceholder extends StatelessWidget {
   const _Paceholder({
     this.height,
     this.width,
-    super.key,
   });
 
   final double? height;

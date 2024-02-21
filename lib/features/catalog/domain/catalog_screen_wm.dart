@@ -172,15 +172,15 @@ class CatalogScreenWM extends WidgetModel<CatalogScreen, CatalogScreenModel> imp
 
   @override
   Future<void> scrollToSection(int index) async {
-    if (_selectedSectionState.value == index) return;
     isScrolling = true;
     _selectedSectionState.accept(index);
-    // debugPrint('AZAZAZ ${sectionsWithKey}');
+
     await bodyScrollController.animateTo(
-      _sectionsPositions[index],
+      index == 0 ? 0 : _sectionsPositions[index],
       duration: const Duration(milliseconds: 200),
       curve: Curves.easeInOut,
     );
+    
     isScrolling = false;
     await filterScrollController.scrollToIndex(
       index,

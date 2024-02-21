@@ -1,4 +1,4 @@
-import 'package:eastern_dragon/core/common/generated/assets.dart';
+import 'package:eastern_dragon/generated/assets.dart';
 import 'package:flutter/material.dart';
 
 class AuthScreenLogo extends StatelessWidget {

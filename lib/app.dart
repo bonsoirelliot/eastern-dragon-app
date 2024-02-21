@@ -2,7 +2,9 @@ import 'package:eastern_dragon/core/const/theme/light_theme.dart';
 import 'package:eastern_dragon/core/di/dependencies.dart';
 import 'package:eastern_dragon/core/di/inherited_dependencies.dart';
 import 'package:eastern_dragon/core/router/router.dart';
+import 'package:eastern_dragon/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class EasternDragonApp extends StatelessWidget {
@@ -19,6 +21,13 @@ class EasternDragonApp extends StatelessWidget {
       dependencies: dependencies,
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
         builder: (_, child) {
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(
