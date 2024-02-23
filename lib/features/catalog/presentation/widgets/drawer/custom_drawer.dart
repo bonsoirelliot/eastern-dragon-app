@@ -1,10 +1,11 @@
-import 'package:eastern_dragon/core/common/generated/assets.dart';
 import 'package:eastern_dragon/core/const/static/static_data.dart';
 import 'package:eastern_dragon/core/const/theme/app_colors.dart';
 import 'package:eastern_dragon/core/const/theme/styles.dart';
 import 'package:eastern_dragon/core/di/dependencies.dart';
 import 'package:eastern_dragon/features/catalog/data/drawer_button_model.dart';
 import 'package:eastern_dragon/features/catalog/presentation/widgets/drawer/drawer_button.dart';
+import 'package:eastern_dragon/generated/assets.dart';
+import 'package:eastern_dragon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -49,7 +50,7 @@ class CustomDrawer extends StatelessWidget {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        'Восточная столовая'.toUpperCase(),
+                        S.of(context).app_name.toUpperCase(),
                         style: AppStyles.appTitle.copyWith(
                           color: AppColors.red,
                         ),

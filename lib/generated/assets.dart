@@ -16,5 +16,7 @@ class R {
 
   static const String ASSETS_ICONS_USER_SVG = 'assets/icons/User.svg';
 
+  static const String ASSETS_ICONS_CLOSE_SVG = 'assets/icons/close.svg';
+
   static const String ASSETS_IMAGES_LOGO_PNG = 'assets/images/logo.png';
 }

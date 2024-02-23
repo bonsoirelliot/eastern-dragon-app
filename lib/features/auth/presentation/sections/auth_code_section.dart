@@ -1,6 +1,7 @@
 import 'package:eastern_dragon/core/const/theme/styles.dart';
 import 'package:eastern_dragon/features/auth/domain/auth_screen_wm.dart';
 import 'package:eastern_dragon/features/auth/presentation/widgets/pinput/pin_theme.dart';
+import 'package:eastern_dragon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -21,15 +22,15 @@ class AuthCodeSection extends StatelessWidget {
         const SizedBox(
           height: 40,
         ),
-        const Text(
-          'Верификация аккаунта',
+         Text(
+          S.of(context).account_verification,
           style: AppStyles.h1,
         ),
         const SizedBox(
           height: 16,
         ),
         Text(
-          'Введите 6-значный код из письма которое пришло вам на почту',
+          S.of(context).enter_email_code_title,
           style: AppStyles.subtitle.copyWith(
             color: Colors.white,
           ),

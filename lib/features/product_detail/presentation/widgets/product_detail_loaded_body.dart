@@ -14,43 +14,37 @@ class ProductDetailLoadedBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverMainAxisGroup(
-      slivers: [
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
         if (model.previewImage != null) ...[
-          const SliverToBoxAdapter(
-            child: SizedBox(height: 12),
-          ),
-          SliverToBoxAdapter(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(
-                StaticData.defaultCircularRadius,
-              ),
-              child: ImageOrSvg(model.previewImage),
+          const SizedBox(height: 12),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(
+              StaticData.defaultCircularRadius,
             ),
+            child: ImageOrSvg(model.previewImage),
           ),
         ],
-        const SliverToBoxAdapter(
-          child: SizedBox(height: 12),
-        ),
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  model.name,
-                  style: AppStyles.h1,
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  'Тут какое-то описание товара',
-                  style: AppStyles.caption,
-                ),
-              ],
-            ),
+        const SizedBox(height: 12),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                model.name,
+                style: AppStyles.h1,
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'Тут какое-то описание товара',
+                style: AppStyles.caption,
+              ),
+            ],
           ),
         ),
+        const SizedBox(height: 148),
       ],
     );
   }

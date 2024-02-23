@@ -13,21 +13,21 @@ class LunchDetailLoadedBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverMainAxisGroup(
-      slivers: [
-        const SliverToBoxAdapter(
-          child: SizedBox(height: 12),
-        ),
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 12.0),
-            child: Text(
-              model.name,
-              style: AppStyles.h1,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const SizedBox(height: 12),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 12.0),
+          child: Text(
+            model.name,
+            style: AppStyles.h1,
           ),
         ),
-        SliverList.separated(
+        ListView.separated(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          padding: const EdgeInsets.only(bottom: 148),
           itemBuilder: (_, i) => LunchIngredientWidget(
             model: model.ingredients[i],
           ),

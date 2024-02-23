@@ -1,4 +1,5 @@
-import 'package:eastern_dragon/core/common/generated/assets.dart';
+import 'package:eastern_dragon/generated/assets.dart';
+import 'package:eastern_dragon/generated/l10n.dart';
 
 class DrawerButtonModel {
   final String icon;
@@ -15,10 +16,10 @@ class DrawerButtonModel {
 }
 
 final drawerButtons = [
-  DrawerButtonModel(icon: R.ASSETS_ICONS_BASKET_ALT_SVG, title: 'Заказы'),
-  DrawerButtonModel(icon: R.ASSETS_ICONS_USER_SVG, title: 'Профиль'),
-  DrawerButtonModel(icon: R.ASSETS_ICONS_BELL_SVG, title: 'Уведомления'),
-  DrawerButtonModel(icon: R.ASSETS_ICONS_INFO_SVG, title: 'О приложении'),
+  DrawerButtonModel(icon: R.ASSETS_ICONS_BASKET_ALT_SVG, title: S.current.orders),
+  DrawerButtonModel(icon: R.ASSETS_ICONS_USER_SVG, title: S.current.profile),
+  DrawerButtonModel(icon: R.ASSETS_ICONS_BELL_SVG, title: S.current.notifications),
+  DrawerButtonModel(icon: R.ASSETS_ICONS_INFO_SVG, title: S.current.about),
 ];
 
-final logoutDrawerButton = DrawerButtonModel(icon: R.ASSETS_ICONS_SIGN_OUT_SQURE_SVG, title: 'Выйти');
+final logoutDrawerButton = DrawerButtonModel(icon: R.ASSETS_ICONS_SIGN_OUT_SQURE_SVG, title: S.current.exit);

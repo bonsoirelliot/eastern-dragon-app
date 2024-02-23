@@ -1,0 +1,19 @@
+{
+    "app_name": "Восточная столовая",
+    "@_auth": {},
+    "registration": "Регистрация",
+    "name": "Имя",
+    "email": "E-mail",
+    "account_verification": "Верификация аккаунта",
+    "enter_email_code_title": "Введите 6-значный код из письма которое пришло вам на почту",
+    "continue_title": "Продолжить",
+    "@_drawer": {},
+    "orders": "Заказы",
+    "profile": "Профиль",
+    "notifications": "Уведомления",
+    "about": "О приложении",
+    "exit": "Выйти",
+    "@_catalog_detail": {},
+    "choose_options": "Выберите опции",
+    "add_to_cart": "Добавить"
+}
