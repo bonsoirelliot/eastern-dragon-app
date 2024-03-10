@@ -15,6 +15,7 @@ class EasternDragonApp extends StatelessWidget {
 
   final Dependencies dependencies;
 
+
   @override
   Widget build(BuildContext context) {
     return InheritedDependencies(

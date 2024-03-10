@@ -7,7 +7,6 @@ import 'package:eastern_dragon/features/catalog/presentation/widgets/drawer/draw
 import 'package:eastern_dragon/generated/assets.dart';
 import 'package:eastern_dragon/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -80,9 +79,7 @@ class CustomDrawer extends StatelessWidget {
                         title: logoutDrawerButton.title,
                         color: AppColors.red,
                         onPressed: () {
-                          Dependencies.of(context).userAuthEntity.logout().then(
-                                (_) => context.pushReplacement('/welcome'),
-                              );
+                          Dependencies.of(context).userAuthEntity.logout();
                         },
                       ),
                       const SizedBox(height: 40),

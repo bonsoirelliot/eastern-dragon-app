@@ -1,28 +1,56 @@
+import 'package:eastern_dragon/core/common/data/models/user/user_model.dart';
 import 'package:eastern_dragon/core/common/domain/user/user_data_worker.dart';
+import 'package:eastern_dragon/core/router/router.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 
 class UserAuthEntity {
-  final _userIdState = StateNotifier<int>();
+  UserAuthEntity() {
+    userListenable.addListener(_routeRefresher);
+  }
 
-  bool get isAuth => _userIdState.value != null;
+  final _userState = StateNotifier<UserModel>();
 
-  Future<void> setUserAuthState(int state) async {
-    _userIdState.accept(state);
+  ListenableState<UserModel> get userListenable => _userState;
 
-    UserDataWorker.writeUserId(state);
+  UserModel? get user => _userState.value;
+
+  Future<void> setUserState(UserModel state) async {
+    _userState.accept(state);
+
+    UserDataWorker.writeUserId(state.id);
   }
 
   Future<void> readUserAuthState() async {
-    final authData = await UserDataWorker.readUserId();
+    final userId = await UserDataWorker.readUserId();
 
-    if (authData == null) return;
+    if (userId == null) {
+      return;
+    }
 
-    _userIdState.accept(authData);
+    _userState.accept(UserModel(id: userId));
+  }
+
+  Future<void> updateUserData({
+    String? email,
+    String? name,
+  }) async {
+    await Future.delayed(const Duration(seconds: 1));
+
+    _userState.accept(
+      user!.copyWith(
+        email: email,
+        name: name,
+      ),
+    );
   }
 
   Future<void> logout() async {
     await UserDataWorker.removeUserId();
-    
-    _userIdState.accept(null);
+
+    _userState.accept(null);
+  }
+
+  void _routeRefresher() {
+    AppRouter.router.refresh();
   }
 }

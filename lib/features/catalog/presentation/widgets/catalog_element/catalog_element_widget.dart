@@ -1,37 +1,23 @@
-import 'package:eastern_dragon/core/common/domain/snackbars_and_sheets/bottom_sheet_shower.dart';
 import 'package:eastern_dragon/core/common/presentation/widgets/image_or_svg.dart';
 import 'package:eastern_dragon/core/const/theme/app_colors.dart';
 import 'package:eastern_dragon/features/catalog/data/catalog_item_model.dart';
 import 'package:eastern_dragon/features/catalog/presentation/widgets/catalog_element/catalog_element_info_widget.dart';
-import 'package:eastern_dragon/features/catalog/presentation/widgets/add_to_cart_bottom_sheet/catalog_element_add_to_cart_bottom_sheet.dart';
-import 'package:eastern_dragon/features/lunch_detail/presentation/lunch_detail_screen.dart';
-import 'package:eastern_dragon/features/product_detail/presentation/product_detail_screen.dart';
+import 'package:eastern_dragon/features/catalog/presentation/widgets/catalog_element/domain/catalog_element_wm.dart';
+import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 
-class CatalogElementWidget extends StatelessWidget {
+class CatalogElementWidget extends ElementaryWidget<ICatalogElementWM> {
   const CatalogElementWidget({
     required this.model,
     super.key,
-  });
+  }) : super(defaultCatalogElementWMFactory);
 
   final CatalogItemModel model;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(ICatalogElementWM wm) {
     return GestureDetector(
-      onTap: () {
-        BottomSheetShower.showDefaultFlexibleBottomSheet(
-          context,
-          widget: model.isLunch
-              ? LunchDetailScreen(
-                  id: model.id,
-                )
-              : ProductDetailScreen(
-                  id: model.id,
-                ),
-          bottomSheet: CatalogElementAddToCartBottomSheet(model: model),
-        );
-      },
+      onTap: wm.onElementPressed,
       child: DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
@@ -46,7 +32,7 @@ class CatalogElementWidget extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(6),
                   child: ImageOrSvg(
-                    model.previewImage,
+                    model.image,
                     width: 124,
                     height: 116,
                     fit: BoxFit.cover,

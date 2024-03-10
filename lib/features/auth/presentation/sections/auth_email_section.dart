@@ -25,28 +25,16 @@ class AuthEmailSection extends StatelessWidget {
           height: 40,
         ),
         Text(
-          S.of(context).registration,
+          S.of(context).authorization,
           style: AppStyles.h1,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 24),
-          child: Column(
-            children: [
-              InputField(
-                hintText: S.of(context).name,
-                keyboardType: TextInputType.name,
-                controller: wm.nameController,
-                focusNode: wm.nameFocusNode,
-              ),
-              const SizedBox(
-                height: 12,
-              ),
-              InputField(
-                hintText: S.of(context).email,
-                keyboardType: TextInputType.emailAddress,
-                controller: wm.emailController,
-              ),
-            ],
+          child: InputField(
+            hintText: S.of(context).email,
+            keyboardType: TextInputType.emailAddress,
+            controller: wm.emailController,
+            focusNode: wm.emailFocusNode,
           ),
         ),
         StateNotifierBuilder<bool>(

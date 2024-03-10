@@ -8,11 +8,14 @@ part 'lunch_detail_model.g.dart';
 class LunchDetailModel {
   final String name;
 
+  final String? image;
+
   final List<LunchIngridientModel> ingredients;
 
   LunchDetailModel({
     required this.name,
     required this.ingredients,
+    this.image,
   });
 
   factory LunchDetailModel.fromJson(Map<String, dynamic> json) {

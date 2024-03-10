@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:eastern_dragon/core/common/data/models/base_response/base_response_model.dart';
+import 'package:eastern_dragon/core/common/data/models/user/user_model.dart';
 import 'package:eastern_dragon/core/common/domain/services/request_handler.dart';
 import 'package:elementary/elementary.dart';
 
@@ -9,6 +10,7 @@ class AuthScreenModel extends ElementaryModel {
   }) : super();
 
   final RequestHandler requestHandler;
+
 
   Future<bool> sendEmailCode(String email) async {
     final response = await requestHandler.post(
@@ -25,7 +27,7 @@ class AuthScreenModel extends ElementaryModel {
     return baseRes.data as bool;
   }
 
-  Future<int> auth(String code) async {
+  Future<UserModel> auth(String code) async {
     final response = await requestHandler.post(
       '/user/code/',
       data: FormData.fromMap(
@@ -37,8 +39,8 @@ class AuthScreenModel extends ElementaryModel {
 
     final baseRes = BaseResponseModel.fromJson(response.data as Map<String, dynamic>);
 
-    final id = (baseRes.data as Map<String, dynamic>)['id'] as String;
+    final user = UserModel.fromJson(baseRes.data as Map<String, dynamic>);
 
-    return int.parse(id);
+    return user;
   }
 }

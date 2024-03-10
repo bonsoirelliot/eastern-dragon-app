@@ -1,16 +1,10 @@
 import 'package:eastern_dragon/core/di/dependencies.dart';
-import 'package:eastern_dragon/features/lunch_detail/data/lunch_detail_model.dart';
 import 'package:eastern_dragon/features/lunch_detail/domain/lunch_detail_screen_model.dart';
 import 'package:eastern_dragon/features/lunch_detail/presentation/lunch_detail_screen.dart';
 import 'package:elementary/elementary.dart';
-import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
 
 abstract interface class ILunchDetailScreenWM implements IWidgetModel {
-  EntityValueListenable<LunchDetailModel> get lunchDetailListenable;
-
-  Future<void> loadData();
-
   void pop();
 }
 
@@ -29,28 +23,7 @@ class LunchDetailScreenWM extends WidgetModel<LunchDetailScreen, LunchDetailScre
   late final executor = Dependencies.of(context).executor;
 
   @override
-  EntityValueListenable<LunchDetailModel> get lunchDetailListenable => _lunchDetailState;
-
-  final _lunchDetailState = EntityStateNotifier<LunchDetailModel>();
-
-  @override
-  void initWidgetModel() {
-    loadData();
-    super.initWidgetModel();
-  }
-
-  @override
   void pop() {
     Navigator.of(context).pop();
-  }
-
-  @override
-  Future<void> loadData() async {
-    await executor.execute(
-      () => model.loadData(widget.id),
-      before: _lunchDetailState.loading,
-      onError: _lunchDetailState.error,
-      onSuccess: (data) => _lunchDetailState.content(data!),
-    );
   }
 }

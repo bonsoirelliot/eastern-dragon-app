@@ -17,7 +17,8 @@ class LunchOptionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
+    return Container(
+      constraints: const BoxConstraints(maxWidth: 139),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(
           StaticData.defaultCircularRadius,
@@ -32,7 +33,7 @@ class LunchOptionWidget extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(6),
               child: ImageOrSvg(
-                model.previewImage,
+                model.image,
                 width: 119,
                 height: 113,
                 fit: BoxFit.cover,

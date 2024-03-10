@@ -1,6 +1,7 @@
+import 'package:eastern_dragon/core/const/static/route_names.dart';
 import 'package:eastern_dragon/core/di/dependencies.dart';
 import 'package:eastern_dragon/features/welcome/domain/welcome_screen_model.dart';
-import 'package:eastern_dragon/features/welcome/presentation/pages/welcome_screen.dart';
+import 'package:eastern_dragon/features/welcome/presentation/welcome_screen.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -28,8 +29,6 @@ class WelcomeScreenWM extends WidgetModel<WelcomeScreen, WelcomeScreenModel> imp
     await userAuthEntity.readUserAuthState();
 
     // ignore: use_build_context_synchronously
-    context.pushReplacement(
-      userAuthEntity.isAuth ? '/catalog' : '/auth',
-    );
+    context.push(RouteNames.redirectRoute);
   }
 }

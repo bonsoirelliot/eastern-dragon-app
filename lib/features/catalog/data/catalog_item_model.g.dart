@@ -15,15 +15,11 @@ CatalogItemModel _$CatalogItemModelFromJson(Map<String, dynamic> json) =>
           id: $checkedConvert('id', (v) => v as int),
           name: $checkedConvert('name', (v) => v as String),
           compound: $checkedConvert('compound', (v) => v as String),
-          weights: $checkedConvert('weights', (v) => v as String),
-          price: $checkedConvert('price', (v) => v as String),
-          isLunch: $checkedConvert('isLunch', (v) => v as bool),
-          image: $checkedConvert(
-              'image',
-              (v) => (v as List<dynamic>?)
-                  ?.map((e) =>
-                      ImageNetworkModel.fromJson(e as Map<String, dynamic>))
-                  .toList()),
+          weights: $checkedConvert('weights',
+              (v) => (v as List<dynamic>).map((e) => e as num).toList()),
+          price: $checkedConvert('price', (v) => v as num),
+          isLunch: $checkedConvert('isLunch', (v) => v as bool? ?? false),
+          image: $checkedConvert('image', (v) => v as String?),
         );
         return val;
       },

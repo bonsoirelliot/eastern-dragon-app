@@ -38,7 +38,7 @@ class CatalogElementInfoWidget extends StatelessWidget {
           children: [
             Flexible(
               child: Text(
-                model.weights,
+                '${model.weights.join(' гр/')} гр',
                 style: AppStyles.caption,
               ),
             ),

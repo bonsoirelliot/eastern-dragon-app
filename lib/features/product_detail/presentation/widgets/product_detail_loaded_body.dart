@@ -17,13 +17,13 @@ class ProductDetailLoadedBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (model.previewImage != null) ...[
+        if (model.image != null) ...[
           const SizedBox(height: 12),
           ClipRRect(
             borderRadius: BorderRadius.circular(
               StaticData.defaultCircularRadius,
             ),
-            child: ImageOrSvg(model.previewImage),
+            child: ImageOrSvg(model.image),
           ),
         ],
         const SizedBox(height: 12),

@@ -7,28 +7,26 @@ import 'package:eastern_dragon/features/auth/presentation/auth_screen.dart';
 import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 abstract interface class IAuthScreenWM implements IWidgetModel {
-  /// Состояния
+  /// Состояния кнопки
   ListenableState<bool> get isButtonAvailableListenable;
 
   /// Контроллеры
-  TextEditingController get nameController;
-
   TextEditingController get emailController;
 
   TextEditingController get codeController;
 
   PageController get pageController;
 
-  FocusNode get nameFocusNode;
+  FocusNode get emailFocusNode;
 
   FocusNode get codeFocusNode;
 
-  /// Методы
+  /// Отправка запроса на получение кода
   Future<void> trySendEmail();
 
+  /// Отправка кода, получение модели пользователя
   Future<void> trySendCode();
 }
 
@@ -44,9 +42,6 @@ class AuthScreenWM extends WidgetModel<AuthScreen, AuthScreenModel> implements I
   AuthScreenWM(AuthScreenModel model) : super(model);
 
   @override
-  final nameController = TextEditingController();
-
-  @override
   final emailController = TextEditingController();
 
   @override
@@ -56,7 +51,7 @@ class AuthScreenWM extends WidgetModel<AuthScreen, AuthScreenModel> implements I
   final pageController = PageController();
 
   @override
-  final nameFocusNode = FocusNode();
+  final emailFocusNode = FocusNode();
 
   @override
   final codeFocusNode = FocusNode();
@@ -72,29 +67,25 @@ class AuthScreenWM extends WidgetModel<AuthScreen, AuthScreenModel> implements I
 
   @override
   void initWidgetModel() {
-    nameFocusNode.requestFocus();
+    emailFocusNode.requestFocus();
 
-    nameController.addListener(_validator);
-    emailController.addListener(_validator);
+    emailController.addListener(_emailValidator);
 
     super.initWidgetModel();
   }
 
   @override
   void dispose() {
-    nameController.removeListener(_validator);
-    emailController.removeListener(_validator);
+    emailController.removeListener(_emailValidator);
 
     super.dispose();
   }
 
-  /// Валидатор для полей
-  void _validator() {
+  /// Валидатор для E-mail
+  void _emailValidator() {
     final emailValidator = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
 
-    final fieldsAreValid = emailValidator.hasMatch(emailController.text) &&
-        nameController.text.length > 1 &&
-        nameController.text.length < 20;
+    final fieldsAreValid = emailValidator.hasMatch(emailController.text);
 
     _isButtonAvailableState.accept(fieldsAreValid);
   }
@@ -128,10 +119,8 @@ class AuthScreenWM extends WidgetModel<AuthScreen, AuthScreenModel> implements I
       () => model.auth(codeController.text),
       before: () => _isButtonAvailableState.accept(false),
       after: () => _isButtonAvailableState.accept(true),
-      onSuccess: (id) {
-        userAuthEntity.setUserAuthState(id!);
-
-        context.pushReplacement('/catalog');
+      onSuccess: (user) {
+        userAuthEntity.setUserState(user!);
       },
       onError: (e) => ToastShower.showError(context, e.title),
     );

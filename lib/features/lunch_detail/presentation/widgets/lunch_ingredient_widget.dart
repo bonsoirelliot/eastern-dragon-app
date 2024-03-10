@@ -26,7 +26,13 @@ class LunchIngredientWidget extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: model.options.map((e) => LunchOptionWidget(model: e)).toList(),
+            children: List.generate(
+              model.options.length,
+              (i) => Padding(
+                padding: EdgeInsets.only(right: i != model.options.length - 1 ? 8 : 0),
+                child: LunchOptionWidget(model: model.options[i]),
+              ),
+            ),
           ),
         ),
       ],

@@ -11,7 +11,7 @@ abstract class UserDataWorker {
     return rawUserAuthState;
   }
 
-  /// Запись данных пользователя на устройство
+  /// Запись id пользователя на устройство
   static Future<void> writeUserId(int userId) async {
     final prefs = await SharedPreferences.getInstance();
 

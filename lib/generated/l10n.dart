@@ -60,11 +60,11 @@ class S {
     );
   }
 
-  /// `Регистрация`
-  String get registration {
+  /// `Авторизация`
+  String get authorization {
     return Intl.message(
-      'Регистрация',
-      name: 'registration',
+      'Авторизация',
+      name: 'authorization',
       desc: '',
       args: [],
     );
@@ -75,6 +75,16 @@ class S {
     return Intl.message(
       'Имя',
       name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Как к Вам обращаться?`
+  String get nameTitle {
+    return Intl.message(
+      'Как к Вам обращаться?',
+      name: 'nameTitle',
       desc: '',
       args: [],
     );

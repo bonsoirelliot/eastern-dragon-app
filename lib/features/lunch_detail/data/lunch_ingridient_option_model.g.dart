@@ -15,13 +15,10 @@ LunchIngridientOptionModel _$LunchIngridientOptionModelFromJson(
         final val = LunchIngridientOptionModel(
           id: $checkedConvert('id', (v) => v as int),
           name: $checkedConvert('name', (v) => v as String),
-          image: $checkedConvert(
-              'image',
-              (v) => (v as List<dynamic>?)
-                  ?.map((e) =>
-                      ImageNetworkModel.fromJson(e as Map<String, dynamic>))
-                  .toList()),
+          extraPrice: $checkedConvert('extra_price', (v) => v as num),
+          image: $checkedConvert('image', (v) => v as String?),
         );
         return val;
       },
+      fieldKeyMap: const {'extraPrice': 'extra_price'},
     );

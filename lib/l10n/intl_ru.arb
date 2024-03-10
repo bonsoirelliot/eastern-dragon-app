@@ -1,8 +1,9 @@
 {
     "app_name": "Восточная столовая",
     "@_auth": {},
-    "registration": "Регистрация",
+    "authorization": "Авторизация",
     "name": "Имя",
+    "nameTitle": "Как к Вам обращаться?",
     "email": "E-mail",
     "account_verification": "Верификация аккаунта",
     "enter_email_code_title": "Введите 6-значный код из письма которое пришло вам на почту",

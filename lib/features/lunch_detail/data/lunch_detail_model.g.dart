@@ -19,6 +19,7 @@ LunchDetailModel _$LunchDetailModelFromJson(Map<String, dynamic> json) =>
                   .map((e) =>
                       LunchIngridientModel.fromJson(e as Map<String, dynamic>))
                   .toList()),
+          image: $checkedConvert('image', (v) => v as String?),
         );
         return val;
       },

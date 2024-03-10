@@ -1,22 +1,22 @@
 import 'package:eastern_dragon/core/common/data/exceptions/response_parse_exception.dart';
-import 'package:eastern_dragon/core/common/data/models/image/image_network_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'lunch_ingridient_option_model.g.dart';
 
-@JsonSerializable(createToJson: false)
+@JsonSerializable(createToJson: false, fieldRename: FieldRename.snake)
 class LunchIngridientOptionModel {
   final int id;
 
   final String name;
 
-  final List<ImageNetworkModel>? image;
+  final String? image;
 
-  String? get previewImage => (image?.isNotEmpty ?? false) ? image!.first.src : null;
+  final num extraPrice;
 
   LunchIngridientOptionModel({
     required this.id,
     required this.name,
+    required this.extraPrice,
     this.image,
   });
 

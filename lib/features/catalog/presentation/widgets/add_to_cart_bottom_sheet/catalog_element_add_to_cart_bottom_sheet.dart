@@ -54,7 +54,7 @@ class _CatalogElementAddToCartBottomSheetState extends State<CatalogElementAddTo
           ),
           const SizedBox(height: 4),
           Text(
-            '${widget.model.weights} г',
+            '${widget.model.totalWeight} г',
             style: weightTextStyle,
           ),
           const SizedBox(height: 8),
