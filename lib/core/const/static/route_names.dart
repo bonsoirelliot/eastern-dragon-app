@@ -4,4 +4,5 @@ class RouteNames {
   static const userDataRoute = '/user_data';
   static const catalogRoute = '/catalog';
   static const redirectRoute = '/redirect';
+  static const cartRoute = '/cart';
 }

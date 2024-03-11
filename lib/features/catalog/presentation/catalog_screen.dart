@@ -4,6 +4,7 @@ import 'package:eastern_dragon/core/common/presentation/widgets/default_loading_
 import 'package:eastern_dragon/features/catalog/domain/catalog_screen_wm.dart';
 import 'package:eastern_dragon/features/catalog/presentation/widgets/catalog_screen_loaded_body.dart';
 import 'package:eastern_dragon/features/catalog/presentation/widgets/drawer/custom_drawer.dart';
+import 'package:eastern_dragon/features/catalog/presentation/widgets/go_to_cart_bottom_sheet.dart';
 import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
@@ -61,6 +62,7 @@ class CatalogScreen extends ElementaryWidget<ICatalogScreenWM> {
           ),
         ),
       ),
+      bottomNavigationBar: const GoToCartBottomSheet(),
     );
   }
 }

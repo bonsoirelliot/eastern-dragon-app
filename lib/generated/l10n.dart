@@ -199,6 +199,36 @@ class S {
       args: [],
     );
   }
+
+  /// `В корзину`
+  String get to_cart {
+    return Intl.message(
+      'В корзину',
+      name: 'to_cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Корзина`
+  String get cart {
+    return Intl.message(
+      'Корзина',
+      name: 'cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Перейти к оплате`
+  String get go_to_payment {
+    return Intl.message(
+      'Перейти к оплате',
+      name: 'go_to_payment',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

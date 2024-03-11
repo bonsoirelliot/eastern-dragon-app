@@ -16,5 +16,8 @@
     "exit": "Выйти",
     "@_catalog_detail": {},
     "choose_options": "Выберите опции",
-    "add_to_cart": "Добавить"
+    "add_to_cart": "Добавить",
+    "to_cart": "В корзину",
+    "cart": "Корзина",
+    "go_to_payment": "Перейти к оплате"
 }

@@ -1,4 +1,4 @@
-import 'package:eastern_dragon/core/const/static/static_data.dart';
+import 'package:eastern_dragon/core/common/presentation/widgets/bottom_sheets/default_bottom_sheet_container.dart';
 import 'package:eastern_dragon/core/const/theme/app_colors.dart';
 import 'package:eastern_dragon/core/const/theme/styles.dart';
 import 'package:eastern_dragon/features/catalog/data/catalog_item_model.dart';
@@ -26,15 +26,7 @@ class _CatalogElementAddToCartBottomSheetState extends State<CatalogElementAddTo
     final titleTextStyle = AppStyles.body.copyWith(color: Colors.white);
     final weightTextStyle = AppStyles.subtitle.copyWith(color: AppColors.lightGray);
 
-    return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(StaticData.defaultCircularRadius),
-          topRight: Radius.circular(StaticData.defaultCircularRadius),
-        ),
-        color: AppColors.gray,
-      ),
-      padding: const EdgeInsets.all(StaticData.defaultSidePadding),
+    return DefaultBottomSheetContainer(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,

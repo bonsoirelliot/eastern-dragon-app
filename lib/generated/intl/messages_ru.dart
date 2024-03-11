@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_to_cart": MessageLookupByLibrary.simpleMessage("Добавить"),
         "app_name": MessageLookupByLibrary.simpleMessage("Восточная столовая"),
         "authorization": MessageLookupByLibrary.simpleMessage("Авторизация"),
+        "cart": MessageLookupByLibrary.simpleMessage("Корзина"),
         "choose_options":
             MessageLookupByLibrary.simpleMessage("Выберите опции"),
         "continue_title": MessageLookupByLibrary.simpleMessage("Продолжить"),
@@ -35,11 +36,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_email_code_title": MessageLookupByLibrary.simpleMessage(
             "Введите 6-значный код из письма которое пришло вам на почту"),
         "exit": MessageLookupByLibrary.simpleMessage("Выйти"),
+        "go_to_payment":
+            MessageLookupByLibrary.simpleMessage("Перейти к оплате"),
         "name": MessageLookupByLibrary.simpleMessage("Имя"),
         "nameTitle":
             MessageLookupByLibrary.simpleMessage("Как к Вам обращаться?"),
         "notifications": MessageLookupByLibrary.simpleMessage("Уведомления"),
         "orders": MessageLookupByLibrary.simpleMessage("Заказы"),
-        "profile": MessageLookupByLibrary.simpleMessage("Профиль")
+        "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
+        "to_cart": MessageLookupByLibrary.simpleMessage("В корзину")
       };
 }
