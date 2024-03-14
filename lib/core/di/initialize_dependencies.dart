@@ -79,8 +79,4 @@ final Map<String, _InitializationStep> _initializationSteps =
   'Initialize UserAuth': (dependencies) {
     dependencies.userAuthEntity = UserAuthEntity();
   },
-  'Initializing analytics': (_) async {/* ... */},
-  'Log app open': (_) {},
-  'Get remote config': (_) async {/* ... */},
-  'Log app initialized': (_) {},
 };

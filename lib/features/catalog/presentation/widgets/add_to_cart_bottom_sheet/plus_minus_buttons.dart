@@ -2,8 +2,9 @@ import 'package:eastern_dragon/core/const/theme/app_colors.dart';
 import 'package:eastern_dragon/core/const/theme/styles.dart';
 import 'package:flutter/material.dart';
 
-class PlusMinusButtons extends StatelessWidget {
-  const PlusMinusButtons({
+/// Кнопки удаления/добавления товара для боттом шитов
+class BottomSheetPlusMinusButtons extends StatelessWidget {
+  const BottomSheetPlusMinusButtons({
     required this.onMinusPressed,
     required this.onPlusPressed,
     required this.quantity,

@@ -52,7 +52,7 @@ class _CatalogElementAddToCartBottomSheetState extends State<CatalogElementAddTo
           const SizedBox(height: 8),
           Row(
             children: [
-              PlusMinusButtons(
+              BottomSheetPlusMinusButtons(
                 onMinusPressed: () {
                   setState(() {
                     quantity -= 1;

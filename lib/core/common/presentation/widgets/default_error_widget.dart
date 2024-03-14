@@ -1,5 +1,5 @@
-import 'package:eastern_dragon/core/const/static/strings.dart';
 import 'package:eastern_dragon/core/const/theme/styles.dart';
+import 'package:eastern_dragon/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class DefaultErrorWidget extends StatelessWidget {
@@ -36,8 +36,8 @@ class DefaultErrorWidget extends StatelessWidget {
               const SizedBox(height: 16),
               FilledButton(
                 onPressed: onPressed,
-                child: const Text(
-                  Strings.reloadTitle,
+                child:  Text(
+                  S.of(context).reload,
                 ),
               ),
             ],

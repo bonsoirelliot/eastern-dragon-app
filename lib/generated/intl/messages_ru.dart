@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notifications": MessageLookupByLibrary.simpleMessage("Уведомления"),
         "orders": MessageLookupByLibrary.simpleMessage("Заказы"),
         "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
+        "reload": MessageLookupByLibrary.simpleMessage("Обновить"),
         "to_cart": MessageLookupByLibrary.simpleMessage("В корзину")
       };
 }

@@ -42,7 +42,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: RouteNames.cartRoute,
-        builder: (_, __) => const CartScreen(),
+        builder: (_, __) => CartScreen(),
       ),
     ],
   );

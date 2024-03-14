@@ -1,4 +1,6 @@
+@Deprecated('Надо будет убрать, т.к. есть CheckedFormatException')
 class ResponseParseException implements Exception {
+  @Deprecated('Надо будет убрать, т.к. есть CheckedFormatException')
   ResponseParseException([
     this._message,
     StackTrace? stackTrace,

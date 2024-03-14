@@ -13,7 +13,7 @@ class GoToCartBottomSheet extends StatelessWidget {
     return DefaultBottomSheetContainer(
       child: FilledButton(
         onPressed: () {
-          context.go(RouteNames.cartRoute);
+          context.push(RouteNames.cartRoute);
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

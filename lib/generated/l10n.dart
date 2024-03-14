@@ -229,6 +229,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Обновить`
+  String get reload {
+    return Intl.message(
+      'Обновить',
+      name: 'reload',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
