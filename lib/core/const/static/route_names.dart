@@ -5,4 +5,5 @@ class RouteNames {
   static const catalogRoute = '/catalog';
   static const redirectRoute = '/redirect';
   static const cartRoute = '/cart';
+  static const createOrder = '/create_order';
 }

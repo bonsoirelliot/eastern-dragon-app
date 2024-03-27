@@ -3,6 +3,7 @@ import 'package:eastern_dragon/core/router/redirects.dart';
 import 'package:eastern_dragon/features/auth/presentation/auth_screen.dart';
 import 'package:eastern_dragon/features/cart/presentation/cart_screen.dart';
 import 'package:eastern_dragon/features/catalog/presentation/catalog_screen.dart';
+import 'package:eastern_dragon/features/create_order/presentation/create_order_screen.dart';
 import 'package:eastern_dragon/features/user_data/presentation/user_data_screen.dart';
 import 'package:eastern_dragon/features/welcome/presentation/redirect_screen.dart';
 import 'package:eastern_dragon/features/welcome/presentation/welcome_screen.dart';
@@ -42,7 +43,11 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: RouteNames.cartRoute,
-        builder: (_, __) => CartScreen(),
+        builder: (_, __) => const CartScreen(),
+      ),
+      GoRoute(
+        path: RouteNames.createOrder,
+        builder: (_, __) => const CreateOrderScreen(),
       ),
     ],
   );

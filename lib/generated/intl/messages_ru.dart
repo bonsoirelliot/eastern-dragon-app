@@ -43,8 +43,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Как к Вам обращаться?"),
         "notifications": MessageLookupByLibrary.simpleMessage("Уведомления"),
         "orders": MessageLookupByLibrary.simpleMessage("Заказы"),
+        "payment": MessageLookupByLibrary.simpleMessage("payment"),
         "profile": MessageLookupByLibrary.simpleMessage("Профиль"),
         "reload": MessageLookupByLibrary.simpleMessage("Обновить"),
-        "to_cart": MessageLookupByLibrary.simpleMessage("В корзину")
+        "to_cart": MessageLookupByLibrary.simpleMessage("В корзину"),
+        "to_go": MessageLookupByLibrary.simpleMessage("На вынос"),
+        "where": MessageLookupByLibrary.simpleMessage("Куда")
       };
 }

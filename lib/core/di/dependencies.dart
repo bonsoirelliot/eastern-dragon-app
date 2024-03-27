@@ -4,6 +4,7 @@ import 'package:eastern_dragon/core/common/domain/services/request_handler.dart'
 import 'package:eastern_dragon/core/common/domain/services/request_helper.dart';
 import 'package:eastern_dragon/core/common/domain/user/user_auth_entity.dart';
 import 'package:eastern_dragon/core/di/inherited_dependencies.dart';
+import 'package:eastern_dragon/features/cart/domain/cart_repository.dart';
 import 'package:flutter/material.dart';
 
 /// Dependencies
@@ -28,6 +29,8 @@ abstract interface class Dependencies {
   abstract final UserAuthEntity userAuthEntity;
 
   abstract final Executor executor;
+
+  abstract final CartRepository cartRepository;
 }
 
 /// Мутабельные зависимости
@@ -54,12 +57,16 @@ final class $MutableDependencies implements Dependencies {
   @override
   late Executor executor;
 
+  @override
+  late CartRepository cartRepository;
+
   Dependencies freeze() => _$ImmutableDependencies(
         requestHandler: requestHandler,
         appMetadata: appMetadata,
         userAuthEntity: userAuthEntity,
         executor: executor,
         requestHelper: requestHelper,
+        cartRepository: cartRepository,
       );
 }
 
@@ -73,6 +80,7 @@ final class _$ImmutableDependencies implements Dependencies {
     required this.userAuthEntity,
     required this.executor,
     required this.requestHelper,
+    required this.cartRepository,
   });
 
   // @override
@@ -92,4 +100,7 @@ final class _$ImmutableDependencies implements Dependencies {
 
   @override
   final Executor executor;
+
+  @override
+  final CartRepository cartRepository;
 }

@@ -43,4 +43,23 @@ class RequestHelper {
 
     return list;
   }
+
+  Future<T> postObject<T>(
+    String path, {
+    T Function(Map<String, dynamic>)? fromJson,
+    Map<String, dynamic>? queryParameters,
+    dynamic data,
+  }) async {
+    final response = await requestHandler.post<dynamic>(
+      path,
+      queryParameters: queryParameters,
+      data: data,
+    );
+
+    final baseRes = BaseResponseModel.fromJson(response.data as Map<String, dynamic>);
+
+    final obj = fromJson != null ? fromJson(baseRes.data as Map<String, dynamic>) : baseRes.data as T;
+
+    return obj;
+  }
 }

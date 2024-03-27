@@ -6,7 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class GoToCartBottomSheet extends StatelessWidget {
-  const GoToCartBottomSheet({super.key});
+  const GoToCartBottomSheet({
+    required this.totalPrice,
+    super.key,
+  });
+
+  final num totalPrice;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +25,7 @@ class GoToCartBottomSheet extends StatelessWidget {
           children: [
             Text(S.current.to_cart),
             Text(
-              '350 ₽',
+              '$totalPrice ₽',
               style: AppStyles.button.copyWith(
                 color: Colors.white.withOpacity(.8),
               ),

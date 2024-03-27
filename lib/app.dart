@@ -21,6 +21,7 @@ class EasternDragonApp extends StatelessWidget {
     return InheritedDependencies(
       dependencies: dependencies,
       child: MaterialApp.router(
+        theme: appTheme,
         routerConfig: AppRouter.router,
         localizationsDelegates: const [
           S.delegate,
@@ -36,10 +37,7 @@ class EasternDragonApp extends StatelessWidget {
             ),
             child: ResponsiveScaledBox(
               width: 375,
-              child: Theme(
-                data: appTheme,
-                child: child!,
-              ),
+              child: child!,
             ),
           );
         },

@@ -6,6 +6,7 @@ import 'package:eastern_dragon/core/common/domain/services/request_handler.dart'
 import 'package:eastern_dragon/core/common/domain/services/request_helper.dart';
 import 'package:eastern_dragon/core/common/domain/user/user_auth_entity.dart';
 import 'package:eastern_dragon/core/di/dependencies.dart';
+import 'package:eastern_dragon/features/cart/domain/cart_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mobile_device_identifier/mobile_device_identifier.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -27,8 +28,7 @@ Future<Dependencies> $initializeDependencies({
     /// Текущий процент выполнения инициализации
     final percent = (currentStep * 100 ~/ totalSteps).clamp(0, 100);
     onProgress?.call(percent, step.key);
-    debugPrint(
-        'Initialization | $currentStep/$totalSteps ($percent%) | "${step.key}"');
+    debugPrint('Initialization | $currentStep/$totalSteps ($percent%) | "${step.key}"');
 
     /// Создаем объект и добавляем его в dependencies
     await step.value(dependencies);
@@ -39,12 +39,10 @@ Future<Dependencies> $initializeDependencies({
 }
 
 /// Метод, который создает объект и добавляет его в dependencies
-typedef _InitializationStep = FutureOr<void> Function(
-    $MutableDependencies dependencies);
+typedef _InitializationStep = FutureOr<void> Function($MutableDependencies dependencies);
 
 /// <Название шага: метод, создающий зависимость>
-final Map<String, _InitializationStep> _initializationSteps =
-    <String, _InitializationStep>{
+final Map<String, _InitializationStep> _initializationSteps = <String, _InitializationStep>{
   'Creating app metadata': (dependencies) async {
     final info = await PackageInfo.fromPlatform();
 
@@ -78,5 +76,11 @@ final Map<String, _InitializationStep> _initializationSteps =
   },
   'Initialize UserAuth': (dependencies) {
     dependencies.userAuthEntity = UserAuthEntity();
+  },
+  'Initialize CartRepository': (dependencies) {
+    dependencies.cartRepository = CartRepository(
+      executor: dependencies.executor,
+      requestHelper: dependencies.requestHelper,
+    );
   },
 };

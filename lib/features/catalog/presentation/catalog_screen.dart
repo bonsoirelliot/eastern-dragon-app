@@ -1,6 +1,7 @@
 import 'package:eastern_dragon/core/common/data/exceptions/custom_exception.dart';
 import 'package:eastern_dragon/core/common/presentation/widgets/default_error_widget.dart';
 import 'package:eastern_dragon/core/common/presentation/widgets/default_loading_indicator.dart';
+import 'package:eastern_dragon/core/di/dependencies.dart';
 import 'package:eastern_dragon/features/catalog/domain/catalog_screen_wm.dart';
 import 'package:eastern_dragon/features/catalog/presentation/widgets/catalog_screen_loaded_body.dart';
 import 'package:eastern_dragon/features/catalog/presentation/widgets/drawer/custom_drawer.dart';
@@ -62,7 +63,20 @@ class CatalogScreen extends ElementaryWidget<ICatalogScreenWM> {
           ),
         ),
       ),
-      bottomNavigationBar: const GoToCartBottomSheet(),
+      bottomNavigationBar: EntityStateNotifierBuilder(
+        listenableEntityState: wm.catalogSectionsListenable,
+        builder: (_, __) {
+          return StateNotifierBuilder(
+              listenableState: Dependencies.of(_).cartRepository.cartListenable,
+              builder: (_, cart) {
+                return (cart?.totalPrice ?? 0) > 0
+                    ? GoToCartBottomSheet(
+                        totalPrice: cart!.totalPrice,
+                      )
+                    : const SizedBox();
+              });
+        },
+      ),
     );
   }
 }

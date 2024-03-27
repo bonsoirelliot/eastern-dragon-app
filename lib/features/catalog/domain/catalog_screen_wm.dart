@@ -95,6 +95,7 @@ class CatalogScreenWM extends WidgetModel<CatalogScreen, CatalogScreenModel> imp
     super.initWidgetModel();
 
     loadCatalog();
+    Dependencies.of(context).cartRepository.loadCart();
 
     catalogSectionsListenable.addListener(sectionsValueListener);
     bodyScrollController.addListener(_bodyScrollListener);

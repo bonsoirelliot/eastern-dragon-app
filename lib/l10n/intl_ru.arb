@@ -20,5 +20,8 @@
     "to_cart": "В корзину",
     "cart": "Корзина",
     "go_to_payment": "Перейти к оплате",
-    "reload": "Обновить"
+    "reload": "Обновить",
+    "to_go": "На вынос",
+    "where": "Куда",
+    "payment": "payment"
 }

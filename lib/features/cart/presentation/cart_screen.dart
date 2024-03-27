@@ -73,7 +73,7 @@ class CartScreen extends ElementaryWidget<ICartScreenWM> {
         builder: (_, cart) {
           return DefaultBottomSheetContainer(
             child: FilledButton(
-              onPressed: () {},
+              onPressed: wm.goToCreateOrder,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

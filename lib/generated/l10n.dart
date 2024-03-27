@@ -239,6 +239,36 @@ class S {
       args: [],
     );
   }
+
+  /// `На вынос`
+  String get to_go {
+    return Intl.message(
+      'На вынос',
+      name: 'to_go',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Куда`
+  String get where {
+    return Intl.message(
+      'Куда',
+      name: 'where',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `payment`
+  String get payment {
+    return Intl.message(
+      'payment',
+      name: 'payment',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
